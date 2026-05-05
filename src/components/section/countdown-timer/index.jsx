@@ -11,7 +11,8 @@ export default function CountdownTimer() {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const weddingDate = new Date(data.tanggal_pernikahan);
+      // "17 Mei 2026" is Indonesian — hardcode as ISO date (10:00 WIB = UTC+7)
+      const weddingDate = new Date('2026-05-17T10:00:00+07:00');
       const now = new Date();
       const difference = weddingDate - now;
 

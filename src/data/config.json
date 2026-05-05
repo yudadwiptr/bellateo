@@ -1,47 +1,45 @@
 {
   "locations": {
-    "martumpol": {
-      "title": "Martumpol / Engagement",
-      "place": "HKBP Sako Kenten Palembang",
-      "time": "01 November 2025 - 10:00",
-      "mapsUrl": "https://maps.app.goo.gl/oUL2Pk9Ec6g8dfAU8?g_st=ic"
+    "traditional": {
+      "title": "Traditional Ceremony",
+      "date": "Saturday, May 16th 2026",
+      "time": "12.00 WIB s/d Selesai",
+      "place": "Premium Convention Center – Jambur Sopo Godang",
+      "address": "Jl. Soekarno Hatta, Kel. Siring Agung, Kec. Ilir Barat I, Kota Palembang, Sumatera Selatan 30153",
+      "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=De'+Premium+Convention+Center+Palembang"
     },
-    "holyMatrimony": {
-      "title": "Holy Matrimony",
-      "place": "HKBP Tangerang Kota",
-      "time": "29 November 2025 - 08:00",
-      "mapsUrl": "https://maps.app.goo.gl/eP2Zq7xp8tMwNfSk9?g_st=ic"
-    },
-    "reception": { 
+    "reception": {
       "title": "Wedding Reception",
-      "place": "Edelweiss Wedding Hall, Sport Club Karawaci",
-      "time": "29 November 2025 - 11:00",
-      "mapsUrl": "https://maps.app.goo.gl/GrZs2Lj3Jpn38rEV8?g_st=ic"
+      "date": "Sunday, May 17th 2026",
+      "time": "10.00 – 14.00 WIB",
+      "place": "Ballroom Rambang Semesta",
+      "address": "Jl. Mayor Ruslan No. 18, Kel. 20 Ilir D.I, Kec. Ilir Timur I, Kota Palembang, Sumatera Selatan 30126",
+      "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=Rambang+Semesta+Ballroom+Palembang"
     }
   },
   "pegantin": {
     "pria": {
       "foto": "/images/groom.jpg",
-      "panggilan": "Piter",
-      "nama": "Irianto Petrus Binsardo Simorangkir, ST., MBA.",
-      "bapak": "Ir. Tumpal Marojahan Simorangkir, MM.(✞)",
-      "ibu": "dr. Ratna Nurlely br Silaen, MKK"
+      "panggilan": "Teo",
+      "nama": "Teofilus Sabamtua Tambunan, S.E.",
+      "bapak": "Marudut Tambunan",
+      "ibu": "Lusiana Hutapea"
     },
     "wanita": {
       "foto": "/images/bride.jpg",
-      "panggilan": "Dewi",
-      "nama": "Dewi Putri Siagian, S.Kom., M.T.I., S.Ak.",
-      "bapak": "Willer Siagian, S.H., M.Si.(✞)",
-      "ibu": "Delfi Panjaitan, S.E., M.Si., Ak., BKP., CA., CPA., CLI., ASEAN CPA., CFI"
+      "panggilan": "Bella",
+      "nama": "Ruth Venisa Bella Marpaung, S.H.",
+      "bapak": "Drs. Saut Tumpal Maludin Marpaung",
+      "ibu": "Nova Pasaribu, S.T., M.Tr.T."
     }
   },
   "audio_url": "/audio/weddingsong.mp3",
-  "tanggal_pernikahan": "29 NOVEMBER 2025",
-  "thumbnail_image_url": "/images/foto_1.jpeg",
+  "tanggal_pernikahan": "17 Mei 2026",
+  "thumbnail_image_url": "/images/foto_1.jpg",
   "url_video": "/video/videodewi.mp4",
-  "intro": "Setelah melalui perjalanan hidup yang penuh warna, Tuhan akhirnya mempertemukan Piter dan Dewi dalam waktu dan keadaan yang paling indah.\n\nBukan sekadar kebetulan, melainkan takdir yang disusun dengan begitu lembut ketika dua hati yang berbeda dipertemukan dalam kesiapan, keikhlasan, dan kasih yang tulus.\n\nMereka memulai kisahnya dengan langkah kecil yang sederhana, namun setiap pertemuan, setiap percakapan, dan setiap doa yang terucap menjelma menjadi benang-benang kasih yang semakin menguatkan cinta di antara keduanya.\n\nKini, setelah melewati berbagai proses, keyakinan, dan restu dari orang tua serta keluarga tercinta, Piter dan Dewi siap menapaki babak baru sebuah perjalanan suci menuju pernikahan.\n\nPerjalanan di mana cinta tidak lagi sekadar janji, melainkan sebuah komitmen untuk saling menjaga, menemani, dan menua bersama dalam kebahagiaan yang abadi.",
+  "intro": "Berawal dari langkah kecil yang sederhana, setiap percakapan dan doa perlahan merajut benang kasih yang tak terpisahkan. Kini, setelah melewati berbagai proses dan restu keluarga, Bella & Teo siap menapaki babak baru menuju perjalanan suci pernikahan.\n\nSebuah komitmen untuk saling menjaga, menemani, dan menua bersama dalam kebahagiaan yang abadi.",
   "breaking_news_img": "/images/gl_2.jpg",
-  "breaking_news_content": "<p>Halo, teman-teman dan keluarga tersayang! Kami dengan penuh sukacita ingin berbagi kabar bahagia bahwa kami akan segera menikah!</p><p className=\"mt-4\">Momen ini adalah langkah baru dalam perjalanan hidup kami, dan kami merasa sangat bersyukur bisa merayakannya bersama orang-orang yang kami cintai.</p><p className=\"mt-4\">Kami ingin mengundang kalian semua untuk hadir dan menjadi bagian dari hari istimewa kami, untuk berbagi doa, tawa, dan kebahagiaan bersama.</p><p className=\"mt-4\">Dengan penuh cinta,</p><p>Dewi & Piter 🤍",
+  "breaking_news_content": "<p>Halo, teman-teman dan keluarga tersayang! Kami dengan penuh sukacita ingin berbagi kabar bahagia bahwa kami akan segera menikah!</p><p className=\"mt-4\">Momen ini adalah langkah baru dalam perjalanan hidup kami, dan kami merasa sangat bersyukur bisa merayakannya bersama orang-orang yang kami cintai.</p><p className=\"mt-4\">Kami ingin mengundang kalian semua untuk hadir dan menjadi bagian dari hari istimewa kami, untuk berbagi doa, tawa, dan kebahagiaan bersama.</p><p className=\"mt-4\">Dengan penuh cinta,</p><p>Bela & Teo 🤍",
   "love_story": [
     {
       "image_url": "/images/foto5.jpg",
@@ -65,13 +63,13 @@
     }
   ],
   "gallery": [
-    "/images/foto_1.jpeg",
-    "/images/foto_2.jpeg",
-    "/images/foto_3.jpeg",
+    "/images/foto_1.jpg",
+    "/images/foto_2.jpg",
+    "/images/foto_3.jpg",
     "/images/foto_7.jpg",
-    "/images/foto_4.jpeg",
+    "/images/foto_4.jpg",
     "/images/foto_6.jpg",
-    "/images/foto_8.jpeg",
+    "/images/foto_8.jpg",
     "/images/slide_1.jpg",
     "/images/header.jpg"
   ],

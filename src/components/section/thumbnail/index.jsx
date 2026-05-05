@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import DetailInfo from '../detail-info';
 import data from '../../../data/config.json';
 
 const TagItem = ({ title }) => {
   return (
-    <li className="bg-[#4D4D4D] py-1 px-2 rounded-xl text-xs text-white">
+    <li
+      className="text-xs text-gray-300 tracking-wider"
+      style={{ textShadow: '0 1px 4px rgba(0,0,0,0.9)' }}
+    >
       {title}
     </li>
   );
@@ -13,18 +16,13 @@ const TagItem = ({ title }) => {
 export default function Thumbnail() {
   const [isOpenDetail, setIsOpenDetail] = React.useState(false);
 
-  // Remove auto-open on scroll/touch. Only open detail on button click.
-
-  // suaravideo audio ref for synchronized playback
   const suaravideoRef = React.useRef(null);
-  // Handler to open detail and schedule weddingsong
   const handleSeeDetail = () => {
     setIsOpenDetail(true);
-    // After 2.5s, start weddingsong.mp3 if not already playing
     setTimeout(() => {
       const weddingsong = document.getElementById('weddingsong-audio');
       if (weddingsong && weddingsong.paused) {
-        weddingsong.play().catch(() => {});
+        weddingsong.play().catch(() => { });
       }
     }, 2500);
   };
@@ -32,73 +30,123 @@ export default function Thumbnail() {
   if (isOpenDetail) {
     return <DetailInfo suaravideoRef={suaravideoRef} />;
   }
+
   return (
-    <div
-      style={{
-        backgroundImage: `url(${data.thumbnail_image_url})`,
-      }}
-      className="min-h-screen bg-cover bg-center bg-no-repeat flex flex-col justify-end mb-10"
-    >
-      <div className="pb-10  pt-2 bg-gradient-to-b from-transparent via-black to-black">
-        <div className="px-5 mb-10 space-y-2">
+    <>
+      <style>{`
+        @keyframes softBounce {
+          0%, 100% { transform: translateY(0); opacity: 0.55; }
+          50% { transform: translateY(7px); opacity: 1; }
+        }
+      `}</style>
+      <div
+        style={{
+          backgroundImage: `url(${data.thumbnail_image_url})`,
+          backgroundPosition: 'center 20%'
+        }}
+        className="min-h-screen bg-cover bg-no-repeat flex flex-col justify-end mb-10 relative"
+      >
+        {/* NIKAHFIX logo at Top Center */}
+        <div className="absolute top-12 left-1/2 -translate-x-1/2 z-10">
           <img
             src="/images/NIKAHFIX.webp"
             alt="NIKAHFIX"
-            width={56}
-            height={15}
+            width={76}
+            height={20}
+            style={{ filter: 'brightness(1.6) contrast(1.15)' }}
           />
-          <div>
-            <h1 className="font-bold text-3xl leading-none">
-              {data.pegantin.wanita.panggilan} & {data.pegantin.pria.panggilan}:{' '}
-              <br />
-              Countdown to Forever
-            </h1>
-          </div>
-          <div>
+        </div>
+
+        {/* Softer gradient overlay — starts fading later so costume detail stays visible */}
+        <div
+          style={{
+            background:
+              'linear-gradient(to bottom, transparent 0%, transparent 20%, rgba(0,0,0,0.6) 50%, #000 75%, #000 100%)',
+          }}
+          className="pb-10 pt-2"
+        >
+          {/* Text block */}
+          <div className="px-8 mb-8 space-y-3">
+
+            {/* Names */}
+            <div>
+              <h1 className="leading-snug">
+                <span
+                  className="text-4xl block"
+                  style={{
+                    fontFamily: "'Cinzel', serif",
+                    fontWeight: 700,
+                    letterSpacing: '0.03em',
+                    textShadow: '0 2px 14px rgba(0,0,0,0.75)',
+                  }}
+                >
+                  {data.pegantin.wanita.panggilan} &amp; {data.pegantin.pria.panggilan}
+                </span>
+                <span
+                  className="text-base font-normal text-white tracking-widest uppercase"
+                  style={{ letterSpacing: '0.18em' }}
+                >
+                  Countdown to Forever
+                </span>
+              </h1>
+            </div>
+
+            {/* Coming Soon + Date */}
             <div className="flex gap-3 items-center">
-              <span className="bg-[#E50913] text-xs text-white rounded-md px-2 py-1">
+              <span
+                className="text-xs text-white rounded px-2 py-1 font-semibold tracking-wide"
+                style={{ background: 'linear-gradient(135deg, #E50914 100%, #A0522D 0%)' }}
+              >
                 Coming Soon
               </span>
-              <p className="text-sm">{data.tanggal_pernikahan}</p>
+              <p className="text-sm text-white/85 tracking-wide">Sunday, 17 May 2026</p>
             </div>
-          </div>
-          <div>
-            <ul className="flex gap-2 items-center">
-              <TagItem title="#romantic" />
-              <TagItem title="#getmarried" />
-              <TagItem title="#family" />
-              <TagItem title="#documenter" />
+
+            {/* Hashtags */}
+            <ul className="flex gap-2 text-gray items-center flex-wrap">
+              <TagItem title="#TheWeddingOfBT" />
+              <TagItem title="#BellaTeoJourney" />
+              <TagItem title="#RoadToMay17" />
             </ul>
           </div>
-        </div>
-        <div className="w-full text-center  ">
-          <button
-            onClick={handleSeeDetail}
-            className="uppercase w-full text-xl font-semibold transition-all duration-300 hover:scale-110 hover:text-[#E50913] relative group"
-          >
-            <span className="relative z-10">See The Detail</span>
-            <div className="absolute inset-0 bg-white/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-lg"></div>
-          </button>
-          <div className="rotate-180">
-            <svg
-              className="w-6 h-6 mx-auto mb-2 animate-bounce "
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 8"
+
+          {/* SEE THE DETAIL button */}
+          <div className="w-full text-center">
+            <button
+              onClick={handleSeeDetail}
+              className="uppercase w-full font-normal transition-all duration-300 hover:scale-105 relative group"
+              style={{
+                fontSize: '1.1rem',
+                letterSpacing: '0.16em',
+              }}
             >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M13 7 7.674 1.3a.91.91 0 0 0-1.348 0L1 7"
-              ></path>
-            </svg>
+              <span className="relative z-10 tracking-tighter">See The Detail</span>
+              <div className="absolute inset-0 bg-white/10 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-lg"></div>
+            </button>
+
+            {/* Soft bounce arrow */}
+            <div style={{ animation: 'softBounce 2.2s ease-in-out infinite' }}>
+              <svg
+                className="w-5 h-5 mx-auto mt-1 mb-2 text-white/70"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </div>
           </div>
+
+          {/* suaravideoRef is only used in DetailInfo */}
         </div>
-        {/* suaravideoRef is now only used in DetailInfo for sore.mp3, not here */}
       </div>
-    </div>
+    </>
   );
 }
