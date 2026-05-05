@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import data from '../../data/config.json';
 
@@ -7,6 +7,8 @@ const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
 const episodes = data.love_story;
 
 export default function SlideLoveStory({ isActive }) {
+  const [selectedEpisode, setSelectedEpisode] = useState(null);
+
   return (
     <div style={{
       width: '100%', height: '100%', background: '#080808',
@@ -18,7 +20,7 @@ export default function SlideLoveStory({ isActive }) {
           variants={fadeUp} initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
           transition={{ duration: 0.4, delay: 0.1 }}
-          style={{ color: '#E50913', fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 6 }}
+          style={{ color: '#B3B3B3', fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 6 }}
         >
           Season 1 · {episodes.length} Episodes
         </motion.p>
@@ -35,37 +37,38 @@ export default function SlideLoveStory({ isActive }) {
         </motion.h2>
       </div>
 
-      {/* Horizontal scrolling episode strip */}
+      {/* Vertical scrolling episode list */}
       <motion.div
-        initial={{ opacity: 0, x: 40 }}
-        animate={isActive ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
+        initial={{ opacity: 0, y: 30 }}
+        animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.7, delay: 0.35 }}
         style={{
           flex: 1,
-          overflowX: 'auto',
-          overflowY: 'hidden',
+          overflowY: 'auto',
+          overflowX: 'hidden',
           display: 'flex',
-          gap: 14,
-          padding: '12px 28px 24px',
+          flexDirection: 'column',
+          gap: 20,
+          padding: '12px 28px 32px',
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
-          alignItems: 'flex-start',
         }}
       >
         {episodes.map((ep, i) => (
           <div
             key={i}
+            onClick={() => setSelectedEpisode(ep)}
             style={{
-              flexShrink: 0,
-              width: 220,
-              borderRadius: 12,
-              overflow: 'hidden',
-              background: '#161616',
-              border: '1px solid rgba(255,255,255,0.07)',
+              display: 'flex',
+              gap: 16,
+              alignItems: 'flex-start',
+              paddingBottom: i === episodes.length - 1 ? 0 : 20,
+              borderBottom: i === episodes.length - 1 ? 'none' : '1px solid rgba(255,255,255,0.1)',
+              cursor: 'pointer',
             }}
           >
             {/* Episode thumbnail */}
-            <div style={{ position: 'relative', height: 130, overflow: 'hidden' }}>
+            <div style={{ position: 'relative', width: 140, height: 85, flexShrink: 0, borderRadius: 6, overflow: 'hidden' }}>
               <img
                 src={ep.image_url}
                 alt={ep.title}
@@ -74,32 +77,27 @@ export default function SlideLoveStory({ isActive }) {
               />
               {/* Episode number badge */}
               <div style={{
-                position: 'absolute', top: 8, left: 8,
+                position: 'absolute', top: 4, left: 4,
                 background: '#E50913', color: '#fff',
-                fontSize: '0.6rem', fontWeight: 700,
-                padding: '2px 8px', borderRadius: 999, letterSpacing: '0.1em',
+                fontSize: '0.55rem', fontWeight: 700,
+                padding: '2px 6px', borderRadius: 4,
               }}>
-                EP {i + 1}
+                {i + 1}
               </div>
-              {/* Gradient overlay */}
-              <div style={{
-                position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%',
-                background: 'linear-gradient(to bottom, transparent, #161616)',
-              }} />
             </div>
 
             {/* Episode info */}
-            <div style={{ padding: '12px 14px 14px' }}>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6 }}>
               <p style={{
-                color: '#fff', fontSize: '0.78rem', fontWeight: 600,
-                marginBottom: 6, lineHeight: 1.35,
+                color: '#fff', fontSize: '0.85rem', fontWeight: 700,
+                lineHeight: 1.3,
               }}>
                 {ep.title}
               </p>
               <p style={{
-                color: 'rgba(255,255,255,0.55)', fontSize: '0.7rem',
-                lineHeight: 1.6, textAlign: 'justify',
-                display: '-webkit-box', WebkitLineClamp: 4,
+                color: '#B3B3B3', fontSize: '0.7rem',
+                lineHeight: 1.5, textAlign: 'left',
+                display: '-webkit-box', WebkitLineClamp: 3,
                 WebkitBoxOrient: 'vertical', overflow: 'hidden',
               }}>
                 {ep.description}
@@ -108,6 +106,61 @@ export default function SlideLoveStory({ isActive }) {
           </div>
         ))}
       </motion.div>
+
+      {/* Modal / Pop-up */}
+      {selectedEpisode && (
+        <div 
+          onClick={() => setSelectedEpisode(null)}
+          style={{
+            position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', zIndex: 9999,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            padding: 24, backdropFilter: 'blur(4px)',
+          }}
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()} // Prevent click from closing when clicking inside
+            style={{
+              background: '#141414', borderRadius: 12, overflow: 'hidden',
+              width: '100%', maxWidth: 400, border: '1px solid rgba(255,255,255,0.1)',
+              display: 'flex', flexDirection: 'column',
+              position: 'relative'
+            }}
+          >
+            {/* Close Button */}
+            <button 
+              onClick={() => setSelectedEpisode(null)}
+              style={{
+                position: 'absolute', top: 12, right: 12,
+                background: 'rgba(0,0,0,0.6)', border: 'none', borderRadius: '50%',
+                width: 32, height: 32, color: '#fff', fontSize: 16,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer', zIndex: 10
+              }}
+            >
+              ✕
+            </button>
+            
+            {/* Modal Image */}
+            <div style={{ width: '100%', height: 220 }}>
+              <img 
+                src={selectedEpisode.image_url} 
+                alt={selectedEpisode.title} 
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+            </div>
+
+            {/* Modal Content */}
+            <div style={{ padding: '20px' }}>
+              <h3 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 700, marginBottom: 12, lineHeight: 1.3 }}>
+                {selectedEpisode.title}
+              </h3>
+              <p style={{ color: '#B3B3B3', fontSize: '0.85rem', lineHeight: 1.6, textAlign: 'left' }}>
+                {selectedEpisode.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

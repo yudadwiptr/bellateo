@@ -32,19 +32,19 @@ const TimeBox = ({ value, label, delay, isActive }) => (
     style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}
   >
     <div style={{
-      background: 'linear-gradient(135deg, #1a0000, #2a0000)',
-      border: '1px solid rgba(229,9,19,0.35)',
-      borderRadius: 12, width: 72, height: 72,
+      background: '#1F1F1F',
+      borderRadius: 8, width: 72, height: 72,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
-      fontSize: '2rem', fontWeight: 800, color: '#fff',
+      fontSize: '2.2rem', fontWeight: 700, color: '#fff',
+      fontFamily: "'Inter', 'Helvetica', sans-serif",
       fontVariantNumeric: 'tabular-nums',
-      boxShadow: '0 0 20px rgba(229,9,19,0.15), inset 0 1px 0 rgba(255,255,255,0.08)',
+      boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
     }}>
       {String(value).padStart(2, '0')}
     </div>
     <span style={{
-      color: 'rgba(255,255,255,0.4)', fontSize: '0.6rem',
-      letterSpacing: '0.2em', textTransform: 'uppercase',
+      color: '#B3B3B3', fontSize: '0.65rem',
+      letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: 600
     }}>
       {label}
     </span>
@@ -76,7 +76,7 @@ export default function SlideCountdown({ isActive }) {
         variants={fadeUp} initial="hidden"
         animate={isActive ? 'visible' : 'hidden'}
         transition={{ duration: 0.4, delay: 0.1 }}
-        style={{ color: '#E50913', fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase' }}
+        style={{ color: '#B3B3B3', fontSize: '0.6rem', letterSpacing: '0.4em', textTransform: 'uppercase' }}
       >
         Save The Date
       </motion.p>
@@ -88,7 +88,8 @@ export default function SlideCountdown({ isActive }) {
         transition={{ duration: 0.55, delay: 0.2 }}
         style={{
           fontFamily: "'Cinzel', serif", fontSize: 'clamp(1rem, 4.5vw, 1.4rem)',
-          fontWeight: 700, color: '#fff', letterSpacing: '0.04em', lineHeight: 1.4,
+          fontWeight: 700, color: '#fff', letterSpacing: '0.04em', lineHeight: 1.5,
+          textShadow: '0 2px 10px rgba(0,0,0,0.5)',
           maxWidth: 300,
         }}
       >
@@ -123,16 +124,18 @@ export default function SlideCountdown({ isActive }) {
           window.open(url, '_blank');
         }}
         style={{
-          display: 'inline-flex', alignItems: 'center', gap: 8,
-          background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)',
-          borderRadius: 999, padding: '9px 22px',
-          color: '#fff', fontSize: '0.75rem', letterSpacing: '0.1em',
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+          background: 'transparent', border: '1px solid rgba(255,255,255,0.4)',
+          borderRadius: 4, padding: '10px 24px',
+          color: '#fff', fontSize: '0.8rem', letterSpacing: '0.05em',
+          fontWeight: 600, fontFamily: "'Inter', 'Helvetica', sans-serif",
           cursor: 'pointer',
         }}
-        whileHover={{ background: 'rgba(255,255,255,0.13)' }}
+        whileHover={{ background: 'rgba(255,255,255,0.1)', borderColor: 'rgba(255,255,255,0.8)' }}
+        whileTap={{ scale: 0.98 }}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
         </svg>
         Add to Calendar
       </motion.button>

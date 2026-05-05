@@ -11,27 +11,27 @@ function formatDate(str) {
   return new Date(str).toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }).replace(',', '');
 }
 
-const WishItem = forwardRef(({ name, message, color, created_at }, ref) => (
+const WishItem = forwardRef(({ name, message, created_at }, ref) => (
   <div ref={ref} style={{
-    background: '#1a1a1a', borderRadius: 10,
-    border: '1px solid rgba(255,255,255,0.06)',
-    padding: '12px 14px',
+    padding: '16px 0',
+    display: 'flex', gap: 14, alignItems: 'flex-start',
+    borderBottom: '1px solid rgba(255,255,255,0.05)',
   }}>
-    <div style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-      <div style={{
-        width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
-        background: color, display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontWeight: 700, fontSize: '0.9rem', color: '#fff',
-      }}>
-        {name.charAt(0).toUpperCase()}
-      </div>
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 4 }}>
-          <span style={{ color: '#fff', fontWeight: 600, fontSize: '0.82rem' }}>{name}</span>
-          <span style={{ color: '#E50913', fontSize: '0.6rem', background: 'rgba(229,9,19,0.1)', padding: '1px 7px', borderRadius: 999 }}>Guest</span>
-        </div>
-        <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.78rem', lineHeight: 1.55 }}>{message}</p>
-        <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.65rem', marginTop: 4 }}>{formatDate(created_at)}</p>
+    {/* Profile Icon */}
+    <div style={{
+      width: 40, height: 40, borderRadius: 4, flexShrink: 0, overflow: 'hidden',
+    }}>
+      <img src="images/guest-icon.png" alt="Guest" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+    </div>
+    
+    <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
+      {/* Message */}
+      <p style={{ color: '#fff', fontSize: '0.85rem', lineHeight: 1.5, textAlign: 'left' }}>{message}</p>
+      
+      {/* Sender and Date */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+        <span style={{ color: '#B3B3B3', fontWeight: 600, fontSize: '0.75rem' }}>{name}</span>
+        <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.65rem' }}>• {formatDate(created_at)}</span>
       </div>
     </div>
   </div>
@@ -45,6 +45,7 @@ export default function SlideWish({ isActive }) {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null); // 'success' | 'error' | null
   const [formErrors, setFormErrors] = useState({});
+  const [focused, setFocused] = useState(null);
 
   const fetchWishes = async () => {
     try {
@@ -91,12 +92,14 @@ export default function SlideWish({ isActive }) {
     } finally { setLoading(false); }
   };
 
-  const inputStyle = {
-    width: '100%', background: '#222', color: '#fff',
-    border: '1px solid rgba(255,255,255,0.1)',
-    borderRadius: 8, padding: '9px 12px', fontSize: '0.8rem',
+  const getInputStyle = (field) => ({
+    width: '100%', background: '#333333', color: '#fff',
+    border: 'none',
+    borderBottom: focused === field ? '2px solid #E50914' : '2px solid transparent',
+    borderRadius: '4px 4px 0 0', padding: '12px 14px', fontSize: '0.85rem',
     outline: 'none', boxSizing: 'border-box',
-  };
+    transition: 'border-bottom 0.2s',
+  });
 
   return (
     <div style={{
@@ -109,7 +112,7 @@ export default function SlideWish({ isActive }) {
           variants={fadeUp} initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
           transition={{ duration: 0.4, delay: 0.1 }}
-          style={{ color: '#E50913', fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 6 }}
+          style={{ color: '#B3B3B3', fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 6 }}
         >
           {wishes.length} Wishes
         </motion.p>
@@ -131,7 +134,7 @@ export default function SlideWish({ isActive }) {
           animate={isActive ? 'visible' : 'hidden'}
           transition={{ duration: 0.5, delay: 0.3 }}
           onSubmit={handleSubmit}
-          style={{ background: '#141414', borderRadius: 12, padding: '14px', display: 'flex', flexDirection: 'column', gap: 10, border: '1px solid rgba(255,255,255,0.07)' }}
+          style={{ display: 'flex', flexDirection: 'column', gap: 14 }}
         >
           {status === 'success' && (
             <div style={{ background: 'rgba(0,200,83,0.1)', border: '1px solid rgba(0,200,83,0.3)', borderRadius: 8, padding: '8px 12px', color: '#00C853', fontSize: '0.78rem' }}>
@@ -144,15 +147,21 @@ export default function SlideWish({ isActive }) {
             </div>
           )}
           <div>
-            <label style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.7rem', display: 'block', marginBottom: 5 }}>Nama</label>
-            <input style={inputStyle} value={name} onChange={e => setName(e.target.value)} placeholder="Nama kamu" />
+            <label style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.7rem', display: 'block', marginBottom: 6 }}>Nama</label>
+            <input 
+              style={getInputStyle('name')} 
+              value={name} onChange={e => setName(e.target.value)} 
+              onFocus={() => setFocused('name')} onBlur={() => setFocused(null)}
+              placeholder="Nama kamu" 
+            />
             {formErrors.name && <p style={{ color: '#E50913', fontSize: '0.65rem', marginTop: 3 }}>{formErrors.name}</p>}
           </div>
           <div>
-            <label style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.7rem', display: 'block', marginBottom: 5 }}>Ucapan & Doa</label>
+            <label style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.7rem', display: 'block', marginBottom: 6 }}>Ucapan & Doa</label>
             <textarea
-              style={{ ...inputStyle, resize: 'none', minHeight: 72 }}
+              style={{ ...getInputStyle('message'), resize: 'none', minHeight: 80 }}
               value={message} onChange={e => setMessage(e.target.value)}
+              onFocus={() => setFocused('message')} onBlur={() => setFocused(null)}
               placeholder="Tuliskan doa & ucapan terbaikmu..."
               rows={3}
             />
@@ -161,14 +170,19 @@ export default function SlideWish({ isActive }) {
           <button
             type="submit" disabled={loading}
             style={{
-              background: loading ? 'rgba(229,9,19,0.5)' : '#E50913',
-              color: '#fff', border: 'none', borderRadius: 8,
-              padding: '10px', fontSize: '0.8rem', fontWeight: 600,
+              background: loading ? 'rgba(229,9,20,0.5)' : '#E50914',
+              color: '#fff', border: 'none', borderRadius: 4,
+              padding: '12px', fontSize: '0.85rem', fontWeight: 700, fontFamily: 'sans-serif',
               cursor: loading ? 'not-allowed' : 'pointer',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+              marginTop: 4,
             }}
           >
-            {loading ? 'Mengirim...' : 'Kirim Ucapan 🤍'}
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
+            {loading ? 'Mengirim...' : 'Kirim Ucapan'}
           </button>
         </motion.form>
 

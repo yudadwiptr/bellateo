@@ -23,16 +23,6 @@ export default function SlideThankYou({ isActive }) {
         alignItems: 'center', justifyContent: 'center',
         padding: '0 28px', textAlign: 'center', gap: 20,
       }}>
-        {/* Heart */}
-        <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          animate={isActive ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-          transition={{ type: 'spring', stiffness: 200, damping: 14, delay: 0.1 }}
-          style={{ fontSize: '2.5rem', lineHeight: 1 }}
-        >
-          🤍
-        </motion.div>
-
         {/* Thank You */}
         <motion.h2
           variants={fadeUp} initial="hidden"
@@ -40,28 +30,36 @@ export default function SlideThankYou({ isActive }) {
           transition={{ duration: 0.6, delay: 0.3 }}
           style={{
             fontFamily: "'Cinzel', serif",
-            fontSize: 'clamp(2rem, 8vw, 2.8rem)',
+            fontSize: 'clamp(1.5rem, 7vw, 2.5rem)',
             fontWeight: 700, color: '#fff',
             letterSpacing: '0.06em',
             textShadow: '0 4px 20px rgba(0,0,0,0.8)',
+            textTransform: 'uppercase',
+            textAlign: 'center'
           }}
         >
-          Thank You
+          Mauliate Godang
         </motion.h2>
 
         {/* Subtitle */}
-        <motion.p
+        <motion.div
           variants={fadeUp} initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
           transition={{ duration: 0.6, delay: 0.45 }}
           style={{
             color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem',
-            lineHeight: 1.7, maxWidth: 280,
+            lineHeight: 1.7, maxWidth: 300,
             textAlign: 'center',
+            display: 'flex', flexDirection: 'column', gap: 12
           }}
         >
-          For your prayers, blessings, and presence in our special day. Your love means the world to us.
-        </motion.p>
+          <p>
+            "Turtu ma ninna anduhur, turtu ma ninna kukur. Gabe ma hita luhur, jala horas-horas ma hita luhur."
+          </p>
+          <p>
+            Terima kasih atas doa restu dan kehadiran Bapak/Ibu/Saudara/i di hari bahagia kami. Tuhan mamasu-masu (Tuhan memberkati).
+          </p>
+        </motion.div>
 
         {/* Divider */}
         <motion.div

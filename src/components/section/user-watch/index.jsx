@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from 'react';
 
 export default function UserWatch({ onClick }) {
-  //get params from url
-  const [to, setTo] = useState('Guest');
+  const [guests, setGuests] = useState(['Guest']);
 
   useEffect(() => {
     if (window) {
       const url = new URL(window.location.href);
-      const to = url.searchParams.get('to');
-      setTo(to ? to : 'Guest');
+      const toParam = url.searchParams.get('to');
+      if (toParam) {
+        // Split by common delimiters like "&", "dan", "and"
+        let names = toParam.split(/\s+&\s+|\s+dan\s+|\s+and\s+/i).map(n => n.trim()).filter(Boolean);
+        if (names.length === 0) names = [toParam];
+
+        // Show up to 2 profiles
+        setGuests(names.slice(0, 2));
+      } else {
+        setGuests(['Guest']);
+      }
     }
   }, []);
-
 
   const handleClick = (e) => {
     // Play Netflix sound on guest button click (all devices)
@@ -24,38 +31,44 @@ export default function UserWatch({ onClick }) {
       document.body.appendChild(netflixAudio);
     }
     netflixAudio.currentTime = 0;
-    netflixAudio.play().catch(() => {});
+    netflixAudio.play().catch(() => { });
 
     // Dispatch a global event so the top-level SongButton can start the main song
     try {
       window.dispatchEvent(new Event('guest-click'));
-    } catch (err) {}
+    } catch (err) { }
 
     if (typeof onClick === 'function') onClick(e);
   };
 
   return (
-    <div className="py-10 text-center space-y-28">
+    <div className="min-h-screen flex flex-col items-center justify-center pb-20 text-center">
       <img
-        className="mx-auto scale-110"
+        className="mb-12 scale-110"
         src="images/NIKAHFIX.webp"
         width={'125px'}
         height={'48px'}
         alt="nikahfix"
       />
       <div>
-        <p className="mb-10 text-2xl">Who's Watching?</p>
-        <div onClick={handleClick} className="group cursor-pointer">
-          <img
-            className="mx-auto group-hover:scale-125"
-            src="images/guest-icon.png"
-            width={100}
-            height={100}
-            alt="nikahfix"
-          />
-          <p className="text-xl mt-2 group-hover:scale-125 group-hover:pt-5">
-            {to}
-          </p>
+        <p className="mb-8 text-xl font-normal text-white tracking-wide">Who's Watching?</p>
+
+        {/* Profile list */}
+        <div className="flex justify-center gap-8 sm:gap-12">
+          {guests.map((guestName, index) => (
+            <div key={index} onClick={handleClick} className="group cursor-pointer w-24 flex flex-col items-center">
+              <div className="w-24 h-24 rounded-md overflow-hidden relative border-2 border-transparent group-hover:border-white transition-colors duration-200">
+                <img
+                  className="w-full h-full object-cover"
+                  src={index === 0 ? "images/guest-icon.png" : "images/guest-icon-2.png"}
+                  alt={`guest ${index + 1}`}
+                />
+              </div>
+              <p className="text-gray-400 text-sm mt-4 group-hover:text-white transition-colors duration-200 w-full truncate">
+                {guestName}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

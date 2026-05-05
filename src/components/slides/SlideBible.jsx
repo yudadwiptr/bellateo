@@ -27,7 +27,7 @@ export default function SlideBible({ isActive }) {
       {/* Dark overlay */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to bottom, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.82) 100%)',
+        background: 'linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.92) 100%)',
       }} />
 
       <div style={{
@@ -41,7 +41,17 @@ export default function SlideBible({ isActive }) {
           variants={fadeUp} initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
           transition={{ duration: 0.5, delay: 0.1 }}
-          style={{ color: '#E50913', fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase' }}
+          style={{ 
+            color: '#fff', 
+            background: '#E50913',
+            padding: '6px 14px',
+            borderRadius: '99px',
+            fontSize: '0.65rem', 
+            fontWeight: 700,
+            letterSpacing: '0.25em', 
+            textTransform: 'uppercase',
+            boxShadow: '0 4px 12px rgba(229,9,19,0.3)'
+          }}
         >
           Bible Verse
         </motion.div>
@@ -53,14 +63,14 @@ export default function SlideBible({ isActive }) {
           transition={{ duration: 0.5, delay: 0.2 }}
           style={{
             fontFamily: 'Georgia, serif', fontSize: '5rem', lineHeight: 0.6,
-            color: 'rgba(229,9,19,0.3)', userSelect: 'none', marginBottom: -10,
+            color: 'rgba(229,9,19,0.4)', userSelect: 'none', marginBottom: -10,
           }}
         >
           "
         </motion.div>
 
         {/* Verses */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
           {verses.map((v, i) => (
             <motion.div
               key={i}
@@ -69,14 +79,22 @@ export default function SlideBible({ isActive }) {
               transition={{ duration: 0.6, delay: 0.3 + i * 0.2 }}
             >
               <p style={{
-                color: '#fff', fontWeight: 600, fontSize: '0.85rem',
-                letterSpacing: '0.06em', marginBottom: 8,
+                fontFamily: 'sans-serif',
+                color: '#fff', 
+                fontWeight: 800, 
+                fontSize: '0.9rem',
+                letterSpacing: '0.15em', 
+                marginBottom: 10,
+                textTransform: 'uppercase'
               }}>
                 {v.ref}
               </p>
               <p style={{
-                color: 'rgba(255,255,255,0.75)', fontSize: '0.85rem',
-                fontStyle: 'italic', lineHeight: 1.7,
+                color: 'rgba(255,255,255,0.9)', 
+                fontSize: '0.9rem',
+                fontWeight: 300,
+                fontStyle: 'italic', 
+                lineHeight: 1.9,
                 textAlign: 'justify',
               }}>
                 {v.text}

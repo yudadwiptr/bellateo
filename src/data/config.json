@@ -63,15 +63,17 @@
     }
   ],
   "gallery": [
-    "/images/foto_1.jpg",
-    "/images/foto_2.jpg",
-    "/images/foto_3.jpg",
-    "/images/foto_7.jpg",
-    "/images/foto_4.jpg",
-    "/images/foto_6.jpg",
-    "/images/foto_8.jpg",
-    "/images/slide_1.jpg",
-    "/images/header.jpg"
+    "/images/gl10.jpg",
+    "/images/gl11.jpg",
+    "/images/gl12.jpg",
+    "/images/gl13.jpg",
+    "/images/gl14.jpg",
+    "/images/gl15.jpg",
+    "/images/gl16.jpg",
+    "/images/gl17.jpg",
+    "/images/gl18.jpg",
+    "/images/gl19.jpg",
+    "/images/gl20.jpg"
   ],
   "show_menu": {
     "breaking_news": true,

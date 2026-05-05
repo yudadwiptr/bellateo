@@ -26,17 +26,18 @@ export default function SlideGroom({ isActive }) {
           position: 'absolute', bottom: 0, left: 0, right: 0, height: '60%',
           background: 'linear-gradient(to bottom, transparent, #0a0a0a)',
         }} />
-        {/* Label badge */}
+        {/* Label top left without pill */}
         <motion.div
           variants={fadeUp} initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
           transition={{ duration: 0.5, delay: 0.4 }}
           style={{
-            position: 'absolute', top: 16, left: 16,
-            background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)',
-            border: '1px solid rgba(255,255,255,0.15)',
-            borderRadius: 999, padding: '4px 14px',
-            color: '#E50913', fontSize: '0.6rem', letterSpacing: '0.3em', textTransform: 'uppercase',
+            position: 'absolute', top: 24, left: 24,
+            color: 'rgba(255,255,255,0.8)',
+            fontFamily: 'sans-serif',
+            fontSize: '12px',
+            letterSpacing: '3px',
+            textTransform: 'uppercase',
           }}
         >
           The Groom
@@ -45,27 +46,24 @@ export default function SlideGroom({ isActive }) {
 
       {/* Info — bottom 42% */}
       <div style={{ flex: '0 0 42%', padding: '12px 28px 24px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        {/* Decorative line */}
+        
+        {/* Name in Cinzel, 2 lines */}
         <motion.div
-          initial={{ width: 0 }} animate={isActive ? { width: 40 } : { width: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          style={{ height: 2, background: '#E50913', marginBottom: 12 }}
-        />
-
-        {/* Name in Cinzel */}
-        <motion.h2
           variants={fadeUp} initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
           transition={{ duration: 0.6, delay: 0.55 }}
-          style={{
-            fontFamily: "'Cinzel', serif",
-            fontSize: 'clamp(1.15rem, 4vw, 1.5rem)',
-            fontWeight: 700, color: '#fff', marginBottom: 4,
-            letterSpacing: '0.02em', lineHeight: 1.3,
-          }}
+          style={{ marginBottom: 16 }}
         >
-          {pria.nama}
-        </motion.h2>
+          <h2 style={{
+            fontFamily: "'Cinzel', serif",
+            fontSize: 'clamp(1.5rem, 6vw, 2rem)',
+            fontWeight: 700, color: '#fff',
+            letterSpacing: '0.02em', lineHeight: 1.3,
+          }}>
+            {pria.nama.split(',')[0].trim().split(' ').slice(0, 2).join(' ')}<br />
+            {pria.nama.split(',')[0].trim().split(' ').slice(2).join(' ')}{pria.nama.includes(',') ? ',' + pria.nama.split(',').slice(1).join(',') : ''}
+          </h2>
+        </motion.div>
 
         {/* Parents */}
         <motion.div
@@ -73,19 +71,18 @@ export default function SlideGroom({ isActive }) {
           animate={isActive ? 'visible' : 'hidden'}
           transition={{ duration: 0.6, delay: 0.7 }}
           style={{
-            background: 'rgba(255,255,255,0.05)', borderRadius: 12,
-            padding: '10px 14px', marginTop: 10,
-            border: '1px solid rgba(255,255,255,0.08)',
+            marginTop: 4,
+            borderLeft: '2px solid #E50913',
+            paddingLeft: 16,
+            display: 'flex', flexDirection: 'column', gap: 6
           }}
         >
-          <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 8 }}>
-            Putra Pertama dari
+          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '10px', fontFamily: 'sans-serif', letterSpacing: '1px', textTransform: 'uppercase' }}>
+            Putra pertama dari:
           </p>
-          <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.78rem', lineHeight: 1.7 }}>
-            <span style={{ color: 'rgba(255,255,255,0.5)', marginRight: 4 }}>Bapak</span> {pria.bapak}
-          </p>
-          <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.78rem', lineHeight: 1.7 }}>
-            <span style={{ color: 'rgba(255,255,255,0.5)', marginRight: 4 }}>Ibu</span> {pria.ibu}
+          <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.8rem', fontFamily: 'sans-serif', lineHeight: 1.6 }}>
+            Bapak {pria.bapak} <br />
+            &amp; Ibu {pria.ibu}
           </p>
         </motion.div>
       </div>

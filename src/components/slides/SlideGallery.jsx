@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import data from '../../data/config.json';
 
 const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
@@ -18,7 +18,7 @@ export default function SlideGallery({ isActive }) {
           variants={fadeUp} initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
           transition={{ duration: 0.4, delay: 0.1 }}
-          style={{ color: '#E50913', fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 6 }}
+          style={{ color: '#B3B3B3', fontSize: '0.65rem', letterSpacing: '0.35em', textTransform: 'uppercase', marginBottom: 6 }}
         >
           {data.gallery.length} Photos
         </motion.p>
@@ -46,7 +46,7 @@ export default function SlideGallery({ isActive }) {
           padding: '12px 28px 28px',
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
-          alignItems: 'stretch',
+          alignItems: 'center',
         }}
       >
         {data.gallery.map((src, i) => (
@@ -55,56 +55,74 @@ export default function SlideGallery({ isActive }) {
             onClick={() => setSelected(src)}
             style={{
               flexShrink: 0,
-              width: 160,
-              borderRadius: 10,
+              height: '85%', // Take up most of the vertical space
+              aspectRatio: '2/3', // Movie poster ratio
+              borderRadius: 8,
               overflow: 'hidden',
               cursor: 'pointer',
               position: 'relative',
               background: '#111',
+              transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'scale(1.03)';
+              e.currentTarget.style.boxShadow = '0 10px 25px rgba(0,0,0,0.8), 0 0 0 1px rgba(229,9,19,0.5)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.boxShadow = 'none';
             }}
           >
             <img
               src={src}
               alt={`Gallery ${i + 1}`}
               loading="lazy"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.4s ease' }}
-              onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-              onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
-            {/* Hover overlay */}
+            {/* Subtle gradient overlay for depth */}
             <div style={{
               position: 'absolute', inset: 0,
-              background: 'rgba(0,0,0,0)', transition: 'background 0.3s',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}
-              onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.35)'}
-              onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0)'}
-            >
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" strokeWidth="1.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
-              </svg>
-            </div>
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,0.4) 100%)',
+            }} />
           </div>
         ))}
       </motion.div>
 
-      {/* Lightbox */}
-      {selected && (
-        <div
-          onClick={() => setSelected(null)}
-          style={{
-            position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)',
-            zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}
-        >
-          <img src={selected} alt="full" style={{ maxWidth: '92vw', maxHeight: '88vh', borderRadius: 10, objectFit: 'contain' }} />
-          <button onClick={() => setSelected(null)} style={{
-            position: 'absolute', top: 20, right: 20, background: 'rgba(255,255,255,0.1)',
-            border: 'none', borderRadius: '50%', width: 36, height: 36,
-            color: '#fff', fontSize: 18, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>✕</button>
-        </div>
-      )}
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setSelected(null)}
+            style={{
+              position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.95)',
+              zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center',
+              backdropFilter: 'blur(8px)',
+            }}
+          >
+            <motion.img 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.4, type: 'spring', bounce: 0.2 }}
+              src={selected} 
+              alt="Full Preview" 
+              style={{ maxWidth: '95vw', maxHeight: '90vh', borderRadius: 8, objectFit: 'contain', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }} 
+              onClick={(e) => e.stopPropagation()}
+            />
+            
+            <button onClick={() => setSelected(null)} style={{
+              position: 'absolute', top: 24, right: 24, background: 'rgba(255,255,255,0.15)',
+              border: '1px solid rgba(255,255,255,0.2)', borderRadius: '50%', width: 40, height: 40,
+              color: '#fff', fontSize: 18, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              backdropFilter: 'blur(4px)', transition: 'background 0.2s'
+            }}>✕</button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

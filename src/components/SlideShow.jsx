@@ -12,7 +12,6 @@ import SlideWish from './slides/SlideWish';
 import SlideThankYou from './slides/SlideThankYou';
 
 const SLIDES = [
-  { id: 'hero',       label: 'Hero',       Component: SlideHero },
   { id: 'bible',      label: 'Bible',      Component: SlideBible },
   { id: 'bride',      label: 'Bride',      Component: SlideBride },
   { id: 'groom',      label: 'Groom',      Component: SlideGroom },
@@ -83,15 +82,15 @@ export default function SlideShow() {
               slideRefs.current[i]?.scrollIntoView({ behavior: 'smooth' });
             }}
             style={{
-              width: i === currentSlide ? 8 : 5,
-              height: i === currentSlide ? 8 : 5,
+              width: i === currentSlide ? 10 : 5,
+              height: i === currentSlide ? 10 : 5,
               borderRadius: '50%',
               border: 'none',
               cursor: 'pointer',
               background: i === currentSlide ? '#E50913' : 'rgba(255,255,255,0.25)',
               transition: 'all 0.3s ease',
               padding: 0,
-              boxShadow: i === currentSlide ? '0 0 6px #E50913' : 'none',
+              boxShadow: i === currentSlide ? '0 0 10px 2px rgba(229,9,19,0.8), 0 0 4px rgba(255,255,255,0.4) inset' : 'none',
             }}
           />
         ))}

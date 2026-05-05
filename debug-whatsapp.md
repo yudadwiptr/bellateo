@@ -62,7 +62,7 @@ curl -s "https://dewi-piter.vercel.app/" | grep -A5 -B5 "og:image"
 <meta property="og:image:type" content="image/jpeg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Dewi & Piter Wedding Invitation" />
+<meta property="og:image:alt" content="Bella & Teo Wedding Invitation" />
 ```
 
 ## Testing Checklist

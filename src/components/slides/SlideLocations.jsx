@@ -6,64 +6,60 @@ const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } };
 
 const locations = Object.values(data.locations);
 
-const LocationCard = ({ loc, delay, isActive }) => (
+const LocationCard = ({ loc, delay, isActive, isLast }) => (
   <motion.div
     variants={fadeUp} initial="hidden"
     animate={isActive ? 'visible' : 'hidden'}
     transition={{ duration: 0.55, delay }}
     style={{
-      background: '#141414',
-      border: '1px solid rgba(255,255,255,0.07)',
-      borderRadius: 14, overflow: 'hidden',
-      display: 'flex', flexDirection: 'column',
-      position: 'relative',
+      padding: '16px',
+      display: 'flex', flexDirection: 'column', gap: 14,
+      borderBottom: isLast ? 'none' : '1px solid rgba(255,255,255,0.08)',
     }}
   >
-    {/* Left red accent */}
-    <div style={{
-      position: 'absolute', left: 0, top: 0, bottom: 0, width: 3,
-      background: 'linear-gradient(to bottom, #E50913, #8B1A2B)',
-      borderRadius: '3px 0 0 3px',
-    }} />
+    {/* Map snippet / Thumbnail */}
+    <div style={{ width: '100%', height: 110, borderRadius: 6, overflow: 'hidden', background: '#222' }}>
+      <img src="/images/foto_2.jpg" alt="Venue" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+    </div>
 
-    <div style={{ padding: '14px 14px 14px 18px' }}>
-      {/* Title row */}
-      <p style={{ color: '#E50913', fontSize: '0.6rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: 4 }}>
-        {loc.date}
-      </p>
-      <h3 style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', marginBottom: 6, lineHeight: 1.3 }}>
+    {/* Info Layout */}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+      {/* Title */}
+      <h3 style={{ color: '#fff', fontWeight: 700, fontSize: '1rem', letterSpacing: '0.01em' }}>
         {loc.title}
       </h3>
+      
+      {/* Metadata: Date • Time */}
+      <p style={{ color: '#B3B3B3', fontSize: '0.75rem', fontWeight: 500 }}>
+        {loc.date} • {loc.time}
+      </p>
 
-      {/* Time */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
-        </svg>
-        <span style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.75rem' }}>{loc.time}</span>
+      {/* Venue & Address */}
+      <div style={{ marginTop: 6 }}>
+        <p style={{ color: '#B3B3B3', fontSize: '0.75rem', fontWeight: 600, marginBottom: 2 }}>{loc.place}</p>
+        <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.7rem', lineHeight: 1.5 }}>
+          {loc.address}
+        </p>
       </div>
-
-      {/* Venue */}
-      <p style={{ color: '#fff', fontSize: '0.8rem', fontWeight: 600, marginBottom: 3 }}>{loc.place}</p>
-      <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.68rem', lineHeight: 1.5, marginBottom: 12 }}>{loc.address}</p>
-
-      {/* Button */}
-      <button
-        onClick={() => window.open(loc.mapsUrl, '_blank', 'noopener')}
-        style={{
-          width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-          background: 'linear-gradient(135deg, #E50913, #8B1A2B)',
-          color: '#fff', border: 'none', borderRadius: 8,
-          padding: '8px 0', fontSize: '0.75rem', fontWeight: 600,
-          cursor: 'pointer', letterSpacing: '0.06em',
-        }}
-      >
-        <svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor">
-          <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-        </svg>
-        Open in Google Maps
-      </button>
     </div>
+
+    {/* Button */}
+    <button
+      onClick={() => window.open(loc.mapsUrl, '_blank', 'noopener')}
+      style={{
+        width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+        background: '#E50913',
+        color: '#fff', border: 'none', borderRadius: 4,
+        padding: '10px 0', fontSize: '0.8rem', fontWeight: 600,
+        cursor: 'pointer', letterSpacing: '0.03em', marginTop: 4,
+      }}
+    >
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+        <circle cx="12" cy="10" r="3" />
+      </svg>
+      Directions
+    </button>
   </motion.div>
 );
 
@@ -75,12 +71,12 @@ export default function SlideLocations({ isActive }) {
       padding: '48px 24px 32px', gap: 20, overflowY: 'auto',
     }}>
       {/* Header */}
-      <div style={{ flexShrink: 0 }}>
+      <div style={{ flexShrink: 0, marginBottom: 4 }}>
         <motion.p
           variants={fadeUp} initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
           transition={{ duration: 0.4, delay: 0.1 }}
-          style={{ color: '#E50913', fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 6 }}
+          style={{ color: '#B3B3B3', fontSize: '0.75rem', letterSpacing: '0.35em', textTransform: 'uppercase', marginBottom: 12 }}
         >
           You Are Invited
         </motion.p>
@@ -94,10 +90,19 @@ export default function SlideLocations({ isActive }) {
         </motion.h2>
       </div>
 
-      {/* Location cards */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 14, flex: 1 }}>
+      {/* Location List Container */}
+      <div style={{ 
+        display: 'flex', flexDirection: 'column', 
+        background: '#181818', borderRadius: 8,
+      }}>
         {locations.map((loc, i) => (
-          <LocationCard key={i} loc={loc} delay={0.3 + i * 0.15} isActive={isActive} />
+          <LocationCard 
+            key={i} 
+            loc={loc} 
+            delay={0.3 + i * 0.15} 
+            isActive={isActive} 
+            isLast={i === locations.length - 1} 
+          />
         ))}
       </div>
     </div>
