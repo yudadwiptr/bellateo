@@ -150,13 +150,19 @@ export default function SlideLoveStory({ isActive }) {
             </div>
 
             {/* Modal Content */}
-            <div style={{ padding: '20px' }}>
-              <h3 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 700, marginBottom: 12, lineHeight: 1.3 }}>
+            <div style={{ padding: '20px', overflowY: 'auto', maxHeight: '60vh', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              <h3 style={{ color: '#fff', fontSize: '1.2rem', fontWeight: 700, marginBottom: 16, lineHeight: 1.4, letterSpacing: '0.01em' }}>
                 {selectedEpisode.title}
               </h3>
-              <p style={{ color: '#B3B3B3', fontSize: '0.85rem', lineHeight: 1.6, textAlign: 'left' }}>
-                {selectedEpisode.description}
-              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                {selectedEpisode.description.split('\n').map((para, idx) => (
+                  para.trim() && (
+                    <p key={idx} style={{ color: '#B3B3B3', fontSize: '0.9rem', lineHeight: 1.7, textAlign: 'left', fontWeight: 300 }}>
+                      {para}
+                    </p>
+                  )
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -60,7 +60,7 @@ export default function UserWatch({ onClick }) {
               <div className="w-24 h-24 rounded-md overflow-hidden relative border-2 border-transparent group-hover:border-white transition-colors duration-200">
                 <img
                   className="w-full h-full object-cover"
-                  src={index === 0 ? "images/guest-icon.png" : "images/guest-icon-2.png"}
+                  src={index === 0 ? "images/guest-icon.png" : "images/guest-icon2.jpg"}
                   alt={`guest ${index + 1}`}
                 />
               </div>

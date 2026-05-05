@@ -107,7 +107,7 @@ export default function SlideGift({ isActive }) {
         variants={fadeUp} initial="hidden"
         animate={isActive ? 'visible' : 'hidden'}
         transition={{ duration: 0.5, delay: 0.3 }}
-        style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem', lineHeight: 1.65, textAlign: 'justify' }}
+        style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem', lineHeight: 1.65, textAlign: 'left' }}
       >
         {gift.description}
       </motion.p>

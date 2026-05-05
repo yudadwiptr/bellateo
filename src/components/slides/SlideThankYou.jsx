@@ -38,7 +38,7 @@ export default function SlideThankYou({ isActive }) {
             textAlign: 'center'
           }}
         >
-          Mauliate Godang
+          Horas ● Mauliate Godang
         </motion.h2>
 
         {/* Subtitle */}
@@ -106,7 +106,7 @@ export default function SlideThankYou({ isActive }) {
         <img src="/images/NIKAHFIX.webp" alt="NIKAHFIX" width={60} height={16}
           style={{ filter: 'brightness(0.6)', opacity: 0.6 }} />
         <p style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.6rem', letterSpacing: '0.15em' }}>
-          © 2026 · Made with ♥ by Yuma Studio
+          © 2026 · Made by Yuma Studio
         </p>
       </motion.div>
     </div>
