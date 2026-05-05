@@ -5,9 +5,6 @@ import UserWatch from './components/section/user-watch';
 import Thumbnail from './components/section/thumbnail';
 import SongButton from './components/ui/song-button';
 import WishForm from './components/WishForm';
-// ...
-<WishForm />
-
 
 export default function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -15,7 +12,10 @@ export default function App() {
     <div className="bg-black text-white min-h-screen">
       <div className="max-w-sm container">
         {isLogin ? (
-          <Thumbnail />
+          <>
+            <Thumbnail />
+            <WishForm />
+          </>
         ) : (
           <UserWatch
             onClick={() => {
