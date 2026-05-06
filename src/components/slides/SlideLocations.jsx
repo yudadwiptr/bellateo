@@ -12,15 +12,15 @@ const LocationCard = ({ loc, delay, isActive, isLast }) => (
     animate={isActive ? 'visible' : 'hidden'}
     transition={{ duration: 0.55, delay }}
     style={{
-      padding: '16px',
+      padding: '20px',
       display: 'flex', flexDirection: 'column', gap: 12,
-      borderBottom: isLast ? 'none' : '1px solid rgba(255,255,255,0.08)',
+      background: 'rgba(20, 20, 20, 0.85)',
+      borderRadius: 12,
+      border: '1px solid rgba(255,255,255,0.05)',
+      backdropFilter: 'blur(8px)',
+      WebkitBackdropFilter: 'blur(8px)'
     }}
   >
-    {/* Compact Thumbnail */}
-    <div style={{ width: '100%', height: 110, borderRadius: 8, overflow: 'hidden', background: '#222' }}>
-      <img src={loc.image_url || "/images/foto_2.jpg"} alt="Venue" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-    </div>
 
     {/* Info Layout */}
     <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -71,9 +71,10 @@ const LocationCard = ({ loc, delay, isActive, isLast }) => (
 export default function SlideLocations({ isActive }) {
   return (
     <div style={{
-      width: '100%', height: '100%', background: '#080808',
+      width: '100%', height: '100%',
+      background: 'linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url(/images/fotowa.jpg) center/cover no-repeat',
       display: 'flex', flexDirection: 'column',
-      padding: '32px 20px 24px', gap: 12, overflowY: 'auto',
+      padding: '32px 20px 24px', gap: 16, overflowY: 'auto',
     }}>
       {/* Header */}
       <div style={{ flexShrink: 0, marginBottom: 4 }}>
@@ -89,8 +90,7 @@ export default function SlideLocations({ isActive }) {
 
       {/* Location List Container */}
       <div style={{ 
-        display: 'flex', flexDirection: 'column', 
-        background: '#181818', borderRadius: 8,
+        display: 'flex', flexDirection: 'column', gap: 20
       }}>
         {locations.map((loc, i) => (
           <LocationCard 

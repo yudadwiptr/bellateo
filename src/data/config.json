@@ -99,7 +99,7 @@
   },
   "gift": {
     "title": "Wedding Gift",
-    "description": "Your presence and prayers are our greatest gifts. However, if you would like to send a gift, we have provided some options below:",
+    "description": "If you would like to send a gift, we have provided some options below :",
     "bank_accounts": [
       {
         "bank_name": "Bank BNI",

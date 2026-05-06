@@ -33,11 +33,13 @@ export default function SlideGroom({ isActive }) {
           transition={{ duration: 0.5, delay: 0.4 }}
           style={{
             position: 'absolute', top: 24, left: 24,
-            color: 'rgba(255,255,255,0.8)',
+            color: '#fff',
             fontFamily: 'sans-serif',
-            fontSize: '12px',
+            fontSize: '13px',
+            fontWeight: 700,
             letterSpacing: '3px',
             textTransform: 'uppercase',
+            textShadow: '0 2px 8px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.9)'
           }}
         >
           The Groom

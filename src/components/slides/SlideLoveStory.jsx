@@ -121,7 +121,7 @@ export default function SlideLoveStory({ isActive }) {
             onClick={(e) => e.stopPropagation()} // Prevent click from closing when clicking inside
             style={{
               background: '#141414', borderRadius: 12, overflow: 'hidden',
-              width: '100%', maxWidth: 400, border: '1px solid rgba(255,255,255,0.1)',
+              width: '100%', maxWidth: 400, maxHeight: '85vh', border: '1px solid rgba(255,255,255,0.1)',
               display: 'flex', flexDirection: 'column',
               position: 'relative'
             }}
@@ -141,11 +141,11 @@ export default function SlideLoveStory({ isActive }) {
             </button>
             
             {/* Modal Image */}
-            <div style={{ width: '100%', background: '#000' }}>
+            <div style={{ width: '100%', height: 220, flexShrink: 0 }}>
               <img 
                 src={selectedEpisode.image_url} 
                 alt={selectedEpisode.title} 
-                style={{ width: '100%', height: 'auto', maxHeight: '50vh', objectFit: 'contain', display: 'block' }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
             </div>
 

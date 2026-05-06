@@ -27,7 +27,7 @@ export default function SlideBible({ isActive }) {
       {/* Dark overlay */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.92) 100%)',
+        background: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.7) 100%)',
       }} />
 
       <div style={{
