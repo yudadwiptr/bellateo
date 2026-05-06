@@ -141,11 +141,11 @@ export default function SlideLoveStory({ isActive }) {
             </button>
             
             {/* Modal Image */}
-            <div style={{ width: '100%', height: 220 }}>
+            <div style={{ width: '100%', background: '#000' }}>
               <img 
                 src={selectedEpisode.image_url} 
                 alt={selectedEpisode.title} 
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                style={{ width: '100%', height: 'auto', maxHeight: '50vh', objectFit: 'contain', display: 'block' }}
               />
             </div>
 

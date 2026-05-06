@@ -23,11 +23,11 @@ const WishItem = forwardRef(({ name, message, created_at }, ref) => (
     }}>
       <img src="images/guest-icon.png" alt="Guest" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
     </div>
-    
+
     <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
       {/* Message */}
       <p style={{ color: '#fff', fontSize: '0.85rem', lineHeight: 1.5, textAlign: 'left' }}>{message}</p>
-      
+
       {/* Sender and Date */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
         <span style={{ color: '#B3B3B3', fontWeight: 600, fontSize: '0.75rem' }}>{name}</span>
@@ -147,12 +147,12 @@ export default function SlideWish({ isActive }) {
             </div>
           )}
           <div>
-            <label style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.7rem', display: 'block', marginBottom: 6 }}>Nama</label>
-            <input 
-              style={getInputStyle('name')} 
-              value={name} onChange={e => setName(e.target.value)} 
+            <label style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.7rem', display: 'block', marginBottom: 6 }}>Nama Lengkap</label>
+            <input
+              style={getInputStyle('name')}
+              value={name} onChange={e => setName(e.target.value)}
               onFocus={() => setFocused('name')} onBlur={() => setFocused(null)}
-              placeholder="Nama kamu" 
+              placeholder="Nama kamu"
             />
             {formErrors.name && <p style={{ color: '#E50913', fontSize: '0.65rem', marginTop: 3 }}>{formErrors.name}</p>}
           </div>
@@ -194,7 +194,7 @@ export default function SlideWish({ isActive }) {
           ))}
           {wishes.length === 0 && (
             <p style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.8rem', textAlign: 'center', padding: '20px 0' }}>
-              Jadilah yang pertama memberikan ucapan 🤍
+              Thankyou For The Endless Support & Prayer For Us 🤍
             </p>
           )}
         </div>

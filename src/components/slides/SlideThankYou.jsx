@@ -8,20 +8,20 @@ export default function SlideThankYou({ isActive }) {
   return (
     <div style={{
       width: '100%', height: '100%', position: 'relative', overflow: 'hidden',
-      backgroundImage: 'url(/images/foto_1.jpg)',
+      backgroundImage: 'url(/images/header.jpg)',
       backgroundSize: 'cover', backgroundPosition: 'center 20%',
     }}>
       {/* Heavy dark overlay */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.85) 85%, #000 100%)',
+        background: 'linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0.9) 85%, #000 100%)',
       }} />
 
       <div style={{
         position: 'absolute', inset: 0,
         display: 'flex', flexDirection: 'column',
         alignItems: 'center', justifyContent: 'center',
-        padding: '0 28px', textAlign: 'center', gap: 20,
+        padding: '0 28px 10vh', textAlign: 'center', gap: 20,
       }}>
         {/* Thank You */}
         <motion.h2
@@ -30,15 +30,16 @@ export default function SlideThankYou({ isActive }) {
           transition={{ duration: 0.6, delay: 0.3 }}
           style={{
             fontFamily: "'Cinzel', serif",
-            fontSize: 'clamp(1.5rem, 7vw, 2.5rem)',
+            fontSize: 'clamp(1.1rem, 5vw, 1.5rem)',
             fontWeight: 700, color: '#fff',
-            letterSpacing: '0.06em',
+            letterSpacing: '0.1em',
             textShadow: '0 4px 20px rgba(0,0,0,0.8)',
             textTransform: 'uppercase',
-            textAlign: 'center'
+            textAlign: 'center',
+            lineHeight: 1.4
           }}
         >
-          Horas ● Mauliate Godang
+          MAULIATE GODANG • TERIMAKASIH • THANKYOU
         </motion.h2>
 
         {/* Subtitle */}
@@ -47,17 +48,15 @@ export default function SlideThankYou({ isActive }) {
           animate={isActive ? 'visible' : 'hidden'}
           transition={{ duration: 0.6, delay: 0.45 }}
           style={{
-            color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem',
-            lineHeight: 1.7, maxWidth: 300,
-            textAlign: 'center',
-            display: 'flex', flexDirection: 'column', gap: 12
+            color: 'rgba(255,255,255,0.95)', fontSize: '0.8rem',
+            lineHeight: 1.7, maxWidth: 330,
+            textAlign: 'center', fontWeight: 400,
+            display: 'flex', flexDirection: 'column', gap: 12,
+            textShadow: '0 2px 10px rgba(0,0,0,0.5)'
           }}
         >
-          <p>
-            "Turtu ma ninna anduhur, turtu ma ninna kukur. Gabe ma hita luhur, jala horas-horas ma hita luhur."
-          </p>
-          <p>
-            Terima kasih atas doa restu dan kehadiran Bapak/Ibu/Saudara/i di hari bahagia kami. Tuhan mamasu-masu (Tuhan memberkati).
+          <p style={{ fontStyle: 'italic' }}>
+            “To our family and friends, Thankyou for being a part of our Wedding Day. Words can not express the joy that we feel having you all here today. Your presence meant The World to us to have you there to witness our love and commitment to each other. We are so grateful for your love and support as we begin this new chapter together. May The Lord bless you and your family deeply and shower you with all His blessing.”
           </p>
         </motion.div>
 
@@ -69,18 +68,21 @@ export default function SlideThankYou({ isActive }) {
         />
 
         {/* Names */}
-        <motion.p
+        <motion.div
           variants={fadeUp} initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
           transition={{ duration: 0.6, delay: 0.7 }}
-          style={{
+          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4 }}
+        >
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.8rem', fontStyle: 'italic' }}>With Love,</p>
+          <p style={{
             fontFamily: "'Cinzel', serif",
             fontSize: '1.2rem', fontWeight: 700,
             color: '#fff', letterSpacing: '0.05em',
-          }}
-        >
-          {data.pegantin.wanita.panggilan} &amp; {data.pegantin.pria.panggilan}
-        </motion.p>
+          }}>
+            {data.pegantin.wanita.panggilan} and {data.pegantin.pria.panggilan}
+          </p>
+        </motion.div>
 
         {/* Date */}
         <motion.p

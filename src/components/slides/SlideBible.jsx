@@ -21,7 +21,7 @@ export default function SlideBible({ isActive }) {
   return (
     <div style={{
       width: '100%', height: '100%', position: 'relative', overflow: 'hidden',
-      backgroundImage: 'url(/images/foto_3.jpg)',
+      backgroundImage: 'url(/images/gl12.jpg)',
       backgroundSize: 'cover', backgroundPosition: 'center',
     }}>
       {/* Dark overlay */}
@@ -41,14 +41,14 @@ export default function SlideBible({ isActive }) {
           variants={fadeUp} initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
           transition={{ duration: 0.5, delay: 0.1 }}
-          style={{ 
-            color: '#fff', 
+          style={{
+            color: '#fff',
             background: '#E50913',
             padding: '6px 14px',
             borderRadius: '99px',
-            fontSize: '0.65rem', 
+            fontSize: '0.65rem',
             fontWeight: 700,
-            letterSpacing: '0.25em', 
+            letterSpacing: '0.25em',
             textTransform: 'uppercase',
             boxShadow: '0 4px 12px rgba(229,9,19,0.3)'
           }}
@@ -80,20 +80,20 @@ export default function SlideBible({ isActive }) {
             >
               <p style={{
                 fontFamily: 'sans-serif',
-                color: '#fff', 
-                fontWeight: 800, 
+                color: '#fff',
+                fontWeight: 800,
                 fontSize: '0.9rem',
-                letterSpacing: '0.15em', 
+                letterSpacing: '0.15em',
                 marginBottom: 10,
                 textTransform: 'uppercase'
               }}>
                 {v.ref}
               </p>
               <p style={{
-                color: 'rgba(255,255,255,0.9)', 
+                color: 'rgba(255,255,255,0.9)',
                 fontSize: '0.9rem',
                 fontWeight: 300,
-                fontStyle: 'italic', 
+                fontStyle: 'italic',
                 lineHeight: 1.9,
                 textAlign: 'justify',
               }}>

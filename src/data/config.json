@@ -1,17 +1,31 @@
 {
   "locations": {
-    "traditional": {
-      "title": "Traditional Ceremony",
+    "saturday": {
+      "image_url": "/images/foto_2.jpg",
       "date": "Saturday, May 16th 2026",
-      "time": "12.00 WIB s/d Selesai",
+      "events": [
+        {
+          "title": "Holy Matrimony",
+          "time": "08.00 WIB - 10.00 WIB"
+        },
+        {
+          "title": "Traditional Ceremony",
+          "time": "12.00 WIB s/d Selesai"
+        }
+      ],
       "place": "Premium Convention Center – Jambur Sopo Godang",
       "address": "Jl. Soekarno Hatta, Kel. Siring Agung, Kec. Ilir Barat I, Kota Palembang, Sumatera Selatan 30153",
       "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=De'+Premium+Convention+Center+Palembang"
     },
-    "reception": {
-      "title": "Wedding Reception",
+    "sunday": {
+      "image_url": "/images/foto_3.jpg",
       "date": "Sunday, May 17th 2026",
-      "time": "10.00 – 14.00 WIB",
+      "events": [
+        {
+          "title": "Wedding Reception",
+          "time": "10.00 – 14.00 WIB"
+        }
+      ],
       "place": "Ballroom Rambang Semesta",
       "address": "Jl. Mayor Ruslan No. 18, Kel. 20 Ilir D.I, Kec. Ilir Timur I, Kota Palembang, Sumatera Selatan 30126",
       "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=Rambang+Semesta+Ballroom+Palembang"
@@ -19,14 +33,14 @@
   },
   "pegantin": {
     "pria": {
-      "foto": "/images/groom.jpg",
+      "foto": "/images/groom2.jpg",
       "panggilan": "Teo",
       "nama": "Teofilus Sabamtua Tambunan, S.E.",
       "bapak": "Marudut Tambunan",
       "ibu": "Lusiana Hutapea"
     },
     "wanita": {
-      "foto": "/images/bride.jpg",
+      "foto": "/images/bride2.jpg",
       "panggilan": "Bella",
       "nama": "Ruth Venisa Bella Marpaung, S.H.",
       "bapak": "Drs. Saut Tumpal Maludin Marpaung",
@@ -35,29 +49,29 @@
   },
   "audio_url": "/audio/weddingsong.mp3",
   "tanggal_pernikahan": "17 Mei 2026",
-  "thumbnail_image_url": "/images/foto_1.jpg",
+  "thumbnail_image_url": "/images/foto_4.jpg",
   "url_video": "/video/videodewi.mp4",
   "intro": "Berawal dari langkah kecil yang sederhana, setiap percakapan dan doa perlahan merajut benang kasih yang tak terpisahkan. Kini, setelah melewati berbagai proses dan restu keluarga, Bella & Teo siap menapaki babak baru menuju perjalanan suci pernikahan.\n\nSebuah komitmen untuk saling menjaga, menemani, dan menua bersama dalam kebahagiaan yang abadi.",
   "breaking_news_img": "/images/gl_2.jpg",
   "breaking_news_content": "<p>Halo, teman-teman dan keluarga tersayang! Kami dengan penuh sukacita ingin berbagi kabar bahagia bahwa kami akan segera menikah!</p><p className=\"mt-4\">Momen ini adalah langkah baru dalam perjalanan hidup kami, dan kami merasa sangat bersyukur bisa merayakannya bersama orang-orang yang kami cintai.</p><p className=\"mt-4\">Kami ingin mengundang kalian semua untuk hadir dan menjadi bagian dari hari istimewa kami, untuk berbagi doa, tawa, dan kebahagiaan bersama.</p><p className=\"mt-4\">Dengan penuh cinta,</p><p>Bela & Teo 🤍",
   "love_story": [
     {
-      "image_url": "/images/foto5.jpg",
+      "image_url": "/images/gl17.jpg",
       "title": "Episode 1 – Hello Stranger (September 2023)",
       "description": "Our story wasn’t perfect, but it was real. Two people from completely different worlds, with no idea their paths about to cross. But who truly know God’s plan, right?\n\nIt all began when someone from Teo family’s introduced him to Bella. What started as simple, casual conversations slowly grew into something that would change everything. A small “Hello” from Teo to Bella on WhatsApp turned into late-night chat, quietly leading them on a journey neither of them ever expected.\n\nBack then, there wasn’t anything significant yet-just getting to know each other, and taking things slowly."
     },
     {
-      "image_url": "/images/foto_6.jpg",
+      "image_url": "/images/gl_2.jpg",
       "title": "Episode 2 – Encounter (January 2024)",
       "description": "After many late-night conversations, they decided to finally meet. Their first encounter was simple—just a quiet meeting after a religious service at HKBP Church in Palembang.\n\nFrom that day on, something began to grow between them, almost without them realizing it. What started as occasional chats turned into constant texting and long phone calls. They began spending more time together, going out, talking more, and slowly becoming part of each other’s daily lives.\n\nThere was no label, no clear definition of what they were, and no conversations about the future—just two people choosing to be together, letting things unfold naturally."
     },
     {
-      "image_url": "/images/foto_7.jpg",
+      "image_url": "/images/foto5.jpg",
       "title": "Episode 3 – When Life Gives You Tangerine (April 2025)",
       "description": "Life isn’t always about happiness. Sometimes, the universe gives us things we never expect. The same goes for their love story.\n\nIt was never just about sweet conversations or easy moments—they went through ups and downs, moments of doubt, and times when they almost gave up.\n\nThere were challenges, misunderstandings, and silence between them. At times, it felt like walking away might be easier.\n\nBut deep down, they knew where this connection was heading, in the end, after everything they went through, they chose each other and they decided to take it to the next level, together."
     },
     {
-      "image_url": "/images/gl_1.jpg",
+      "image_url": "/images/gl20.jpg",
       "title": "Episode 4 – Eternal (January 2026)",
       "description": "In the early days of 2026, after a journey of learning and healing, Bella and Teo found their way back to each other. No rush, no pressure—just two hearts slowly choosing one another again. A love that, in its quiet simplicity, felt like home."
     }
@@ -88,14 +102,19 @@
     "description": "Your presence and prayers are our greatest gifts. However, if you would like to send a gift, we have provided some options below:",
     "bank_accounts": [
       {
-        "bank_name": "Bank BCA",
-        "account_number": "9999999999",
+        "bank_name": "Bank BNI",
+        "account_number": "465589438",
         "account_holder": "Ruth Venisa Bella Marpaung"
       },
       {
-        "bank_name": "Bank Mandiri",
-        "account_number": "9999999999",
-        "account_holder": "Teofilus Sabamtua Tambunan"
+        "bank_name": "Bank BCA",
+        "account_number": "8437032739",
+        "account_holder": "Ruth Venisa Bella Marpaung"
+      },
+      {
+        "bank_name": "Bank BRI",
+        "account_number": "110301019424503",
+        "account_holder": "Ruth Venisa Bella Marpaung"
       }
     ],
     "wishlist": {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-const WEDDING_DATE = new Date('2026-05-17T10:00:00+07:00');
+const WEDDING_DATE = new Date('2026-05-17T09:30:00+07:00');
 
 function useCountdown() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -58,7 +58,8 @@ export default function SlideCountdown({ isActive }) {
 
   return (
     <div style={{
-      width: '100%', height: '100%', background: '#050505',
+      width: '100%', height: '100%',
+      background: 'linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url(/images/gl13.jpg) center/cover no-repeat',
       display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
       padding: '0 28px', textAlign: 'center', gap: 32,
@@ -93,15 +94,15 @@ export default function SlideCountdown({ isActive }) {
           maxWidth: 300,
         }}
       >
-        Almost Time For Our Celebration
+        Hangin' There <br></br>We're Almost There
       </motion.h2>
 
       {/* Countdown boxes */}
       <div style={{ display: 'flex', gap: 14, justifyContent: 'center' }}>
-        <TimeBox value={days}    label="Days"    delay={0.3} isActive={isActive} />
-        <TimeBox value={hours}   label="Hours"   delay={0.4} isActive={isActive} />
-        <TimeBox value={minutes} label="Mins"    delay={0.5} isActive={isActive} />
-        <TimeBox value={seconds} label="Secs"    delay={0.6} isActive={isActive} />
+        <TimeBox value={days} label="Days" delay={0.3} isActive={isActive} />
+        <TimeBox value={hours} label="Hours" delay={0.4} isActive={isActive} />
+        <TimeBox value={minutes} label="Mins" delay={0.5} isActive={isActive} />
+        <TimeBox value={seconds} label="Secs" delay={0.6} isActive={isActive} />
       </div>
 
       {/* Date */}
@@ -111,7 +112,7 @@ export default function SlideCountdown({ isActive }) {
         transition={{ duration: 0.5, delay: 0.75 }}
         style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.75rem', letterSpacing: '0.12em' }}
       >
-        Sunday · 17 May 2026 · 10.00 WIB
+        Sunday · 17 May 2026 · 09.30 WIB
       </motion.p>
 
       {/* Add to Calendar */}

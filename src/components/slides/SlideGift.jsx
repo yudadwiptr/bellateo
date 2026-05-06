@@ -17,8 +17,10 @@ const GiftCard = ({ bankName, accountNumber, accountHolder, delay, isActive }) =
       animate={isActive ? 'visible' : 'hidden'}
       transition={{ duration: 0.5, delay }}
       style={{
-        background: '#1F1F1F', borderRadius: 12,
-        border: '1px solid rgba(255,255,255,0.05)',
+        background: 'rgba(0, 0, 0, 0.15)', borderRadius: 12,
+        backdropFilter: 'blur(4px)',
+        WebkitBackdropFilter: 'blur(4px)',
+        border: '1px solid rgba(255, 255, 255, 0.15)',
         padding: '20px',
         display: 'flex', flexDirection: 'column', gap: 12,
         position: 'relative'
@@ -78,7 +80,8 @@ export default function SlideGift({ isActive }) {
   const gift = data.gift;
   return (
     <div style={{
-      width: '100%', height: '100%', background: '#080808',
+      width: '100%', height: '100%',
+      background: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url(/images/gl_1.jpg) center/cover no-repeat',
       display: 'flex', flexDirection: 'column',
       padding: '48px 24px 32px', gap: 20, overflowY: 'auto',
     }}>
@@ -126,29 +129,7 @@ export default function SlideGift({ isActive }) {
         ))}
       </div>
 
-      {/* Wishlist button */}
-      {gift.wishlist && (
-        <motion.a
-          variants={fadeUp} initial="hidden"
-          animate={isActive ? 'visible' : 'hidden'}
-          transition={{ duration: 0.5, delay: 0.65 }}
-          href={gift.wishlist.url}
-          target="_blank" rel="noopener noreferrer"
-          style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-            background: 'linear-gradient(135deg, #E50913, #8B1A2B)',
-            color: '#fff', borderRadius: 12,
-            padding: '13px 0', fontSize: '0.8rem', fontWeight: 600,
-            textDecoration: 'none', letterSpacing: '0.06em',
-          }}
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V9a1 1 0 10-2 0v1H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clipRule="evenodd" />
-            <path d="M9 11H3v5a2 2 0 002 2h4v-7zm2 7h4a2 2 0 002-2v-5h-6v7z" />
-          </svg>
-          View Wishlist
-        </motion.a>
-      )}
+
     </div>
   );
 }

@@ -46,16 +46,6 @@ export default function Thumbnail() {
         }}
         className="min-h-screen bg-cover bg-no-repeat flex flex-col justify-end mb-10 relative"
       >
-        {/* NIKAHFIX logo at Top Center */}
-        <div className="absolute top-12 left-1/2 -translate-x-1/2 z-10">
-          <img
-            src="/images/NIKAHFIX.webp"
-            alt="NIKAHFIX"
-            width={76}
-            height={20}
-            style={{ filter: 'brightness(1.6) contrast(1.15)' }}
-          />
-        </div>
 
         {/* Softer gradient overlay — starts fading later so costume detail stays visible */}
         <div
@@ -67,6 +57,17 @@ export default function Thumbnail() {
         >
           {/* Text block */}
           <div className="px-8 mb-8 space-y-3">
+
+            {/* NIKAHFIX logo */}
+            <div className="mb-1">
+              <img
+                src="/images/NIKAHFIX.webp"
+                alt="NIKAHFIX"
+                width={76}
+                height={20}
+                style={{ filter: 'brightness(1.6) contrast(1.15) drop-shadow(0 2px 8px rgba(0,0,0,0.8))' }}
+              />
+            </div>
 
             {/* Names */}
             <div>
@@ -93,20 +94,25 @@ export default function Thumbnail() {
 
             {/* Coming Soon + Date */}
             <div className="flex gap-3 items-center">
-              <span
-                className="text-xs text-white rounded px-2 py-1 font-semibold tracking-wide"
+              <div
+                className="flex flex-col justify-center items-center text-white rounded px-2 py-1 font-semibold tracking-wide shadow-lg"
                 style={{ background: 'linear-gradient(135deg, #E50914 100%, #A0522D 0%)' }}
               >
-                Coming Soon
-              </span>
-              <p className="text-sm text-white/85 tracking-wide">Sunday, 17 May 2026</p>
+                <span className="text-[10px] uppercase leading-tight">Coming</span>
+                <span className="text-[10px] uppercase leading-tight">Soon</span>
+              </div>
+              <p className="text-sm text-white/90 tracking-wide leading-snug">
+                <span className="font-medium text-white block drop-shadow-md">Saturday & Sunday</span>
+                <span className="drop-shadow-md">16 - 17 May 2026</span>
+              </p>
             </div>
 
             {/* Hashtags */}
             <ul className="flex gap-2 text-gray items-center flex-wrap">
-              <TagItem title="#TheWeddingOfBT" />
-              <TagItem title="#BellaTeoJourney" />
-              <TagItem title="#RoadToMay17" />
+              <TagItem title="#ThEOnlyoneforBELLA" />
+              <TagItem title="#FromStrangertoForever" />
+              <TagItem title="#EternalLove" />
+              <TagItem title="#OnlyByHisGrace" />
             </ul>
           </div>
 

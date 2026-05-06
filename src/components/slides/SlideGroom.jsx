@@ -60,8 +60,8 @@ export default function SlideGroom({ isActive }) {
             fontWeight: 700, color: '#fff',
             letterSpacing: '0.02em', lineHeight: 1.3,
           }}>
-            {pria.nama.split(',')[0].trim().split(' ').slice(0, 2).join(' ')}<br />
-            {pria.nama.split(',')[0].trim().split(' ').slice(2).join(' ')}{pria.nama.includes(',') ? ',' + pria.nama.split(',').slice(1).join(',') : ''}
+            {pria.nama.split(',')[0].trim().split(' ').slice(0, -1).join(' ')}<br />
+            {pria.nama.split(',')[0].trim().split(' ').slice(-1).join(' ')}{pria.nama.includes(',') ? ',' + pria.nama.split(',').slice(1).join(',') : ''} // {pria.panggilan}
           </h2>
         </motion.div>
 

@@ -60,8 +60,8 @@ export default function SlideBride({ isActive }) {
             fontWeight: 700, color: '#fff',
             letterSpacing: '0.02em', lineHeight: 1.3,
           }}>
-            {wanita.nama.split(',')[0].trim().split(' ').slice(0, 2).join(' ')}<br />
-            {wanita.nama.split(',')[0].trim().split(' ').slice(2).join(' ')}{wanita.nama.includes(',') ? ',' + wanita.nama.split(',').slice(1).join(',') : ''}
+            {wanita.nama.split(',')[0].trim().split(' ').slice(0, -1).join(' ')}<br />
+            {wanita.nama.split(',')[0].trim().split(' ').slice(-1).join(' ')}{wanita.nama.includes(',') ? ',' + wanita.nama.split(',').slice(1).join(',') : ''} // {wanita.panggilan}
           </h2>
         </motion.div>
 

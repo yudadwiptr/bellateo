@@ -12,30 +12,35 @@ const LocationCard = ({ loc, delay, isActive, isLast }) => (
     animate={isActive ? 'visible' : 'hidden'}
     transition={{ duration: 0.55, delay }}
     style={{
-      padding: '12px',
-      display: 'flex', flexDirection: 'column', gap: 10,
+      padding: '16px',
+      display: 'flex', flexDirection: 'column', gap: 12,
       borderBottom: isLast ? 'none' : '1px solid rgba(255,255,255,0.08)',
     }}
   >
     {/* Compact Thumbnail */}
-    <div style={{ width: '100%', height: 70, borderRadius: 6, overflow: 'hidden', background: '#222' }}>
-      <img src="/images/foto_2.jpg" alt="Venue" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+    <div style={{ width: '100%', height: 110, borderRadius: 8, overflow: 'hidden', background: '#222' }}>
+      <img src={loc.image_url || "/images/foto_2.jpg"} alt="Venue" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
     </div>
 
     {/* Info Layout */}
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-      {/* Title */}
-      <h3 style={{ color: '#fff', fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.01em' }}>
-        {loc.title}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+      {/* Date Title */}
+      <h3 style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', letterSpacing: '0.01em' }}>
+        {loc.date}
       </h3>
       
-      {/* Metadata: Date • Time */}
-      <p style={{ color: '#B3B3B3', fontSize: '0.7rem', fontWeight: 500 }}>
-        {loc.date} • {loc.time}
-      </p>
+      {/* Events */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 6, marginBottom: 2 }}>
+        {loc.events?.map((ev, i) => (
+          <div key={i} style={{ borderLeft: '2px solid #E50913', paddingLeft: 10 }}>
+            <h4 style={{ color: '#fff', fontWeight: 600, fontSize: '0.8rem' }}>{ev.title}</h4>
+            <p style={{ color: '#B3B3B3', fontSize: '0.7rem', fontWeight: 500, marginTop: 2 }}>{ev.time}</p>
+          </div>
+        ))}
+      </div>
 
       {/* Venue & Address */}
-      <div style={{ marginTop: 4 }}>
+      <div>
         <p style={{ color: '#B3B3B3', fontSize: '0.7rem', fontWeight: 600, marginBottom: 1 }}>{loc.place}</p>
         <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.65rem', lineHeight: 1.4 }}>
           {loc.address}
