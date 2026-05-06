@@ -15,12 +15,12 @@ export default function SlideLoveStory({ isActive }) {
       display: 'flex', flexDirection: 'column', overflow: 'hidden',
     }}>
       {/* Header */}
-      <div style={{ padding: '48px 28px 16px', flexShrink: 0 }}>
+      <div style={{ padding: '36px 28px 12px', flexShrink: 0 }}>
         <motion.p
           variants={fadeUp} initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
           transition={{ duration: 0.4, delay: 0.1 }}
-          style={{ color: '#B3B3B3', fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 6 }}
+          style={{ color: '#B3B3B3', fontSize: '0.65rem', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 4 }}
         >
           Season 1 · {episodes.length} Episodes
         </motion.p>
@@ -49,7 +49,7 @@ export default function SlideLoveStory({ isActive }) {
           display: 'flex',
           flexDirection: 'column',
           gap: 20,
-          padding: '12px 28px 32px',
+          padding: '4px 28px 32px',
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
         }}

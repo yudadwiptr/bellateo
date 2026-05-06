@@ -13,9 +13,9 @@
           "time": "12.00 WIB s/d Selesai"
         }
       ],
-      "place": "Premium Convention Center – Jambur Sopo Godang",
-      "address": "Jl. Soekarno Hatta, Kel. Siring Agung, Kec. Ilir Barat I, Kota Palembang, Sumatera Selatan 30153",
-      "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=De'+Premium+Convention+Center+Palembang"
+      "place": "HKBP Palembang Lutheran Church",
+      "address": "Jl. Mayor Ruslan No.03, Kelurahan 20 Ilir D.I, Kecamatan Ilir Timur I, Kota Palembang, Kode Pos 30125",
+      "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=HKBP+Palembang+Lutheran+Church"
     },
     "sunday": {
       "image_url": "/images/foto_3.jpg",
@@ -56,7 +56,7 @@
   "breaking_news_content": "<p>Halo, teman-teman dan keluarga tersayang! Kami dengan penuh sukacita ingin berbagi kabar bahagia bahwa kami akan segera menikah!</p><p className=\"mt-4\">Momen ini adalah langkah baru dalam perjalanan hidup kami, dan kami merasa sangat bersyukur bisa merayakannya bersama orang-orang yang kami cintai.</p><p className=\"mt-4\">Kami ingin mengundang kalian semua untuk hadir dan menjadi bagian dari hari istimewa kami, untuk berbagi doa, tawa, dan kebahagiaan bersama.</p><p className=\"mt-4\">Dengan penuh cinta,</p><p>Bela & Teo 🤍",
   "love_story": [
     {
-      "image_url": "/images/gl17.jpg",
+      "image_url": "/images/gl18.jpg",
       "title": "Episode 1 – Hello Stranger (September 2023)",
       "description": "Our story wasn’t perfect, but it was real. Two people from completely different worlds, with no idea their paths about to cross. But who truly know God’s plan, right?\n\nIt all began when someone from Teo family’s introduced him to Bella. What started as simple, casual conversations slowly grew into something that would change everything. A small “Hello” from Teo to Bella on WhatsApp turned into late-night chat, quietly leading them on a journey neither of them ever expected.\n\nBack then, there wasn’t anything significant yet-just getting to know each other, and taking things slowly."
     },
@@ -66,12 +66,12 @@
       "description": "After many late-night conversations, they decided to finally meet. Their first encounter was simple—just a quiet meeting after a religious service at HKBP Church in Palembang.\n\nFrom that day on, something began to grow between them, almost without them realizing it. What started as occasional chats turned into constant texting and long phone calls. They began spending more time together, going out, talking more, and slowly becoming part of each other’s daily lives.\n\nThere was no label, no clear definition of what they were, and no conversations about the future—just two people choosing to be together, letting things unfold naturally."
     },
     {
-      "image_url": "/images/foto5.jpg",
+      "image_url": "/images/foto_7.jpg",
       "title": "Episode 3 – When Life Gives You Tangerine (April 2025)",
       "description": "Life isn’t always about happiness. Sometimes, the universe gives us things we never expect. The same goes for their love story.\n\nIt was never just about sweet conversations or easy moments—they went through ups and downs, moments of doubt, and times when they almost gave up.\n\nThere were challenges, misunderstandings, and silence between them. At times, it felt like walking away might be easier.\n\nBut deep down, they knew where this connection was heading, in the end, after everything they went through, they chose each other and they decided to take it to the next level, together."
     },
     {
-      "image_url": "/images/gl20.jpg",
+      "image_url": "/images/foto_8.jpg",
       "title": "Episode 4 – Eternal (January 2026)",
       "description": "In the early days of 2026, after a journey of learning and healing, Bella and Teo found their way back to each other. No rush, no pressure—just two hearts slowly choosing one another again. A love that, in its quiet simplicity, felt like home."
     }
@@ -79,15 +79,22 @@
   "gallery": [
     "/images/gl10.jpg",
     "/images/gl11.jpg",
-    "/images/gl12.jpg",
-    "/images/gl13.jpg",
-    "/images/gl14.jpg",
     "/images/gl15.jpg",
+    "/images/gl14.jpg",
     "/images/gl16.jpg",
-    "/images/gl17.jpg",
-    "/images/gl18.jpg",
+    "/images/foto_6.jpg",
+    "/images/gl28.jpg",
+    "/images/slide_1.jpg",
+    "/images/gl21.jpg",
+    "/images/gl22.jpg",
+    "/images/gl20.jpg",
     "/images/gl19.jpg",
-    "/images/gl20.jpg"
+    "/images/fotowa.jpg",
+    "/images/gl23.jpg",
+    "/images/meta2.jpg",
+    "/images/foto_2.jpg",
+    "/images/foto_3.jpg",
+    "/images/gl24.jpg"
   ],
   "show_menu": {
     "breaking_news": true,

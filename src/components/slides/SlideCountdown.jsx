@@ -32,13 +32,13 @@ const TimeBox = ({ value, label, delay, isActive }) => (
     style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}
   >
     <div style={{
-      background: '#1F1F1F',
+      background: '#E50914',
       borderRadius: 8, width: 72, height: 72,
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       fontSize: '2.2rem', fontWeight: 700, color: '#fff',
       fontFamily: "'Inter', 'Helvetica', sans-serif",
       fontVariantNumeric: 'tabular-nums',
-      boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
+      boxShadow: '0 4px 15px rgba(229,9,20,0.4)',
     }}>
       {String(value).padStart(2, '0')}
     </div>
@@ -110,9 +110,9 @@ export default function SlideCountdown({ isActive }) {
         variants={fadeUp} initial="hidden"
         animate={isActive ? 'visible' : 'hidden'}
         transition={{ duration: 0.5, delay: 0.75 }}
-        style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.75rem', letterSpacing: '0.12em' }}
+        style={{ color: 'rgba(255, 255, 255, 0.73)', fontSize: '0.75rem', letterSpacing: '0.12em' }}
       >
-        Sunday · 17 May 2026 · 09.30 WIB
+        Sunday · 17 May 2026 · 09.30 WIB - 14.00 WIB
       </motion.p>
 
       {/* Add to Calendar */}

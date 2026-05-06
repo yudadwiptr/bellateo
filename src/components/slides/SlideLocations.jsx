@@ -41,8 +41,8 @@ const LocationCard = ({ loc, delay, isActive, isLast }) => (
 
       {/* Venue & Address */}
       <div>
-        <p style={{ color: '#B3B3B3', fontSize: '0.7rem', fontWeight: 600, marginBottom: 1 }}>{loc.place}</p>
-        <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.65rem', lineHeight: 1.4 }}>
+        <p style={{ color: '#B3B3B3', fontSize: '0.75rem', fontWeight: 600, marginBottom: 1 }}>{loc.place}</p>
+        <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.7rem', lineHeight: 1.4 }}>
           {loc.address}
         </p>
       </div>

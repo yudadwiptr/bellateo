@@ -11,34 +11,47 @@ function formatDate(str) {
   return new Date(str).toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }).replace(',', '');
 }
 
-const WishItem = forwardRef(({ name, message, created_at }, ref) => (
-  <div ref={ref} style={{
-    padding: '16px 0',
-    display: 'flex', gap: 14, alignItems: 'flex-start',
-    borderBottom: '1px solid rgba(255,255,255,0.05)',
-  }}>
-    {/* Profile Icon */}
-    <div style={{
-      width: 40, height: 40, borderRadius: 4, flexShrink: 0, overflow: 'hidden',
-    }}>
-      <img src="images/guest-icon.png" alt="Guest" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-    </div>
+const getAvatarColor = (char) => {
+  const charCode = char.charCodeAt(0);
+  const colors = [
+    'from-pink-400 to-rose-600',
+    'from-violet-400 to-purple-600',
+    'from-sky-400 to-blue-600',
+    'from-emerald-400 to-teal-600',
+    'from-amber-400 to-orange-600',
+    'from-red-400 to-red-700',
+  ];
+  return colors[charCode % colors.length];
+};
 
-    <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 6 }}>
-      {/* Message */}
-      <p style={{ color: '#fff', fontSize: '0.85rem', lineHeight: 1.5, textAlign: 'left' }}>{message}</p>
+const WishItem = forwardRef(({ name, message, created_at }, ref) => {
+  const initial = name ? name.charAt(0).toUpperCase() : '?';
+  const avatarGradient = getAvatarColor(initial);
 
-      {/* Sender and Date */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
-        <span style={{ color: '#B3B3B3', fontWeight: 600, fontSize: '0.75rem' }}>{name}</span>
-        <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.65rem' }}>• {formatDate(created_at)}</span>
+  return (
+    <div ref={ref} className="snap-start flex-shrink-0 w-[280px] p-4 rounded-2xl backdrop-blur-md bg-white/5 border border-white/10 flex flex-col gap-3 shadow-xl">
+      <div className="flex items-center gap-2">
+        {/* Avatar with Gradient */}
+        <div className={`w-12 h-12 rounded-full shadow-lg flex items-center justify-center bg-gradient-to-br ${avatarGradient} transform transition-transform hover:rotate-12 flex-shrink-0`}>
+          <span className="text-white font-extrabold text-xl tracking-tight">
+            {initial}
+          </span>
+        </div>
+        
+        <div className="min-w-0">
+          <h4 className="text-white font-semibold text-sm truncate">{name}</h4>
+          <p className="text-white/40 text-[10px]">{formatDate(created_at)}</p>
+        </div>
       </div>
+      
+      <p className="text-white/80 text-sm leading-relaxed line-clamp-4 italic">
+        "{message}"
+      </p>
     </div>
-  </div>
-));
+  );
+});
 
 export default function SlideWish({ isActive }) {
-  const lastRef = useRef(null);
   const [wishes, setWishes] = useState([]);
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
@@ -46,12 +59,23 @@ export default function SlideWish({ isActive }) {
   const [status, setStatus] = useState(null); // 'success' | 'error' | null
   const [formErrors, setFormErrors] = useState({});
   const [focused, setFocused] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollRef = useRef(null);
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const scrollLeft = scrollRef.current.scrollLeft;
+      const cardWidth = 280 + 12; // card width + gap
+      const index = Math.round(scrollLeft / cardWidth);
+      setActiveIndex(index);
+    }
+  };
 
   const fetchWishes = async () => {
     try {
       const { data } = await supabase
         .from(import.meta.env.VITE_APP_TABLE_NAME)
-        .select('id, name, message, color, created_at')
+        .select('id, name, message, created_at')
         .order('created_at', { ascending: false });
       setWishes(data || []);
     } catch { setWishes([]); }
@@ -81,7 +105,7 @@ export default function SlideWish({ isActive }) {
     try {
       const { error } = await supabase
         .from(import.meta.env.VITE_APP_TABLE_NAME)
-        .insert([{ name, message: badwords.censor(message), color }]);
+        .insert([{ name, message: badwords.censor(message) }]);
       if (error) throw error;
       await fetchWishes();
       setName(''); setMessage(''); setFormErrors({});
@@ -172,13 +196,13 @@ export default function SlideWish({ isActive }) {
             style={{
               background: loading ? 'rgba(229,9,20,0.5)' : '#E50914',
               color: '#fff', border: 'none', borderRadius: 4,
-              padding: '12px', fontSize: '0.85rem', fontWeight: 700, fontFamily: 'sans-serif',
+              padding: '8px 16px', fontSize: '0.75rem', fontWeight: 700, fontFamily: 'sans-serif',
               cursor: loading ? 'not-allowed' : 'pointer',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-              marginTop: 4,
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+              marginTop: 4, alignSelf: 'center', minWidth: 140
             }}
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="22" y1="2" x2="11" y2="13" />
               <polygon points="22 2 15 22 11 13 2 9 22 2" />
             </svg>
@@ -186,35 +210,39 @@ export default function SlideWish({ isActive }) {
           </button>
         </motion.form>
 
-        {/* Wish list */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {wishes.map((w, i) => (
-            <WishItem key={w.id || i} name={w.name} message={w.message} color={w.color} created_at={w.created_at}
-              ref={i === wishes.length - 1 ? lastRef : null} />
-          ))}
-          {wishes.length === 0 && (
-            <p style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.8rem', textAlign: 'center', padding: '20px 0' }}>
-              Thankyou For The Endless Support & Prayer For Us 🤍
-            </p>
+        {/* Wish list - Horizontal Grid Scroll */}
+        <div style={{ position: 'relative', marginTop: 10 }}>
+          <div 
+            ref={scrollRef}
+            onScroll={handleScroll}
+            className="grid grid-rows-2 grid-flow-col gap-3 pb-6 snap-x snap-mandatory no-scrollbar overflow-x-auto"
+            style={{ 
+              scrollbarWidth: 'none', msOverflowStyle: 'none',
+              paddingLeft: 2, paddingRight: 20,
+              maxHeight: '500px' // Ensure there's a height for the 2 rows
+            }}
+          >
+            {wishes.map((w, i) => (
+              <WishItem key={w.id || i} name={w.name} message={w.message} created_at={w.created_at} />
+            ))}
+            {wishes.length === 0 && (
+              <div className="row-span-2 w-full text-center py-12 px-4 backdrop-blur-sm bg-white/5 rounded-2xl border border-white/5">
+                <p style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.8rem' }}>
+                  Thankyou For The Endless Support & Prayer For Us 🤍
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Pagination dots indicator */}
+          {wishes.length > 2 && (
+            <div className="flex justify-center gap-1.5 mt-2">
+              {Array.from({ length: Math.ceil(wishes.length / 2) }).map((_, i) => (
+                <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i === activeIndex ? 'w-4 bg-red-600' : 'w-1 bg-white/20'}`} />
+              ))}
+            </div>
           )}
         </div>
-      </div>
-      
-      {/* Footer safe area for navigation */}
-      <div style={{ 
-        height: 60, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
-        background: 'linear-gradient(to top, #080808 80%, transparent)',
-      }}>
-        <motion.div
-          animate={{ y: [0, -5, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', opacity: 0.3 }}
-        >
-          <p style={{ fontSize: '0.6rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#fff', marginBottom: 4 }}>Next Slide</p>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
-            <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
-          </svg>
-        </motion.div>
       </div>
     </div>
   );

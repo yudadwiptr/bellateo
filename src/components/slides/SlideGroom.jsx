@@ -48,7 +48,7 @@ export default function SlideGroom({ isActive }) {
 
       {/* Info — bottom 42% */}
       <div style={{ flex: '0 0 42%', padding: '12px 28px 24px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        
+
         {/* Name in Cinzel, 2 lines */}
         <motion.div
           variants={fadeUp} initial="hidden"
@@ -79,8 +79,8 @@ export default function SlideGroom({ isActive }) {
             display: 'flex', flexDirection: 'column', gap: 6
           }}
         >
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '10px', fontFamily: 'sans-serif', letterSpacing: '1px', textTransform: 'uppercase' }}>
-            Putra pertama dari:
+          <p style={{ color: 'rgba(255, 255, 255, 0.67)', fontSize: '10px', fontFamily: 'sans-serif', letterSpacing: '1px', textTransform: 'uppercase' }}>
+            Putra pertama (3 bersaudara) dari :
           </p>
           <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '0.8rem', fontFamily: 'sans-serif', lineHeight: 1.6 }}>
             Bapak {pria.bapak} <br />

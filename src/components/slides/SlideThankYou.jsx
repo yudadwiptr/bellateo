@@ -56,7 +56,7 @@ export default function SlideThankYou({ isActive }) {
           }}
         >
           <p style={{ fontStyle: 'italic' }}>
-            “To our family and friends, Thankyou for being a part of our Wedding Day. Words can not express the joy that we feel having you all here today. Your presence meant The World to us to have you there to witness our love and commitment to each other. We are so grateful for your love and support as we begin this new chapter together. May The Lord bless you and your family deeply and shower you with all His blessing.”
+            “To our family and friends, Thankyou for being a part of our Wedding Day. Words can not express the joy that we feel having you all here in our special day. Your presence meant The World to us to have you there to witness our love and commitment to each other. We are so grateful for your love and support as we begin this new chapter together. May The Lord bless you and your family deeply and shower you with all His blessing.”
           </p>
         </motion.div>
 
@@ -96,21 +96,30 @@ export default function SlideThankYou({ isActive }) {
       </div>
 
       {/* NIKAHFIX watermark at bottom */}
-      <motion.div
+      <motion.a
+        href="https://www.instagram.com/yudadwiptr"
+        target="_blank"
+        rel="noopener noreferrer"
         initial={{ opacity: 0 }}
         animate={isActive ? { opacity: 1 } : { opacity: 0 }}
+        whileHover={{ scale: 1.05, opacity: 1 }}
         transition={{ delay: 1, duration: 0.6 }}
         style={{
           position: 'absolute', bottom: 24, left: 0, right: 0,
           display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
+          textDecoration: 'none', cursor: 'pointer', zIndex: 10
         }}
       >
         <img src="/images/NIKAHFIX.webp" alt="NIKAHFIX" width={60} height={16}
           style={{ filter: 'brightness(0.6)', opacity: 0.6 }} />
-        <p style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.6rem', letterSpacing: '0.15em' }}>
+        <motion.p 
+          animate={{ y: [0, -3, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.6rem', letterSpacing: '0.15em' }}
+        >
           © 2026 · Made by Yuma Studio
-        </p>
-      </motion.div>
+        </motion.p>
+      </motion.a>
     </div>
   );
 }
