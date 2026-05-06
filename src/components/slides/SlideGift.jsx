@@ -21,8 +21,8 @@ const GiftCard = ({ bankName, accountNumber, accountHolder, delay, isActive }) =
         backdropFilter: 'blur(4px)',
         WebkitBackdropFilter: 'blur(4px)',
         border: '1px solid rgba(255, 255, 255, 0.15)',
-        padding: '20px',
-        display: 'flex', flexDirection: 'column', gap: 12,
+        padding: '16px',
+        display: 'flex', flexDirection: 'column', gap: 8,
         position: 'relative'
       }}
     >
@@ -65,8 +65,8 @@ const GiftCard = ({ bankName, accountNumber, accountHolder, delay, isActive }) =
           initial={{ opacity: 0, y: 5 }}
           animate={{ opacity: 1, y: 0 }}
           style={{
-            position: 'absolute', bottom: 20, right: 20,
-            color: '#E50913', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.05em'
+            position: 'absolute', top: 16, right: 16,
+            color: '#E50913', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.05em'
           }}
         >
           Number Copied!
@@ -83,7 +83,7 @@ export default function SlideGift({ isActive }) {
       width: '100%', height: '100%',
       background: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url(/images/gl_1.jpg) center/cover no-repeat',
       display: 'flex', flexDirection: 'column',
-      padding: '48px 24px 32px', gap: 20, overflowY: 'auto',
+      padding: '32px 24px 24px', gap: 12, overflowY: 'auto',
     }}>
       {/* Header */}
       <div style={{ flexShrink: 0 }}>
@@ -91,7 +91,7 @@ export default function SlideGift({ isActive }) {
           variants={fadeUp} initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
           transition={{ duration: 0.4, delay: 0.1 }}
-          style={{ color: '#E5E5E5', fontSize: '0.6rem', letterSpacing: '0.4em', textTransform: 'uppercase', marginBottom: 8 }}
+          style={{ color: '#E5E5E5', fontSize: '0.6rem', letterSpacing: '0.4em', textTransform: 'uppercase', marginBottom: 4 }}
         >
           Optional
         </motion.p>
