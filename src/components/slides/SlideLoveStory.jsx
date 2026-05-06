@@ -106,6 +106,25 @@ export default function SlideLoveStory({ isActive }) {
           </div>
         ))}
       </motion.div>
+      
+      {/* Footer safe area for navigation */}
+      <div style={{ 
+        height: 60, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center',
+        background: 'linear-gradient(to top, #080808 80%, transparent)',
+        pointerEvents: 'none' // Important: allows touches to pass through to parent scroll if needed, 
+        // actually 'none' might not work for scrolling. Let's make it an empty div that ISN'T the scroll container.
+      }}>
+        <motion.div
+          animate={{ y: [0, -5, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', opacity: 0.3 }}
+        >
+          <p style={{ fontSize: '0.6rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#fff', marginBottom: 4 }}>Next Slide</p>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2">
+            <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+          </svg>
+        </motion.div>
+      </div>
 
       {/* Modal / Pop-up */}
       {selectedEpisode && (
