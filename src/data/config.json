@@ -77,11 +77,11 @@
     }
   ],
   "gallery": [
-    "/images/gl10.jpg",
-    "/images/gl11.jpg",
+    "/images/header.jpg",
+    "/images/gl13.jpg",
     "/images/gl15.jpg",
     "/images/gl14.jpg",
-    "/images/gl16.jpg",
+    "/images/gl10.jpg",
     "/images/foto_6.jpg",
     "/images/gl28.jpg",
     "/images/slide_1.jpg",
@@ -110,8 +110,8 @@
     "bank_accounts": [
       {
         "bank_name": "Bank BNI",
-        "account_number": "465589438",
-        "account_holder": "Ruth Venisa Bella Marpaung"
+        "account_number": "1071992787",
+        "account_holder": "Teofilus Sabamtua Tambunan"
       },
       {
         "bank_name": "Bank BCA",

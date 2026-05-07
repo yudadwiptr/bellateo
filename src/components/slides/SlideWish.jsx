@@ -129,9 +129,26 @@ export default function SlideWish({ isActive }) {
     <div style={{
       width: '100%', height: '100%', background: '#080808',
       display: 'flex', flexDirection: 'column', overflow: 'hidden',
+      position: 'relative'
     }}>
+      {/* Background Image with Overlay */}
+      <div style={{
+        position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+        backgroundImage: 'url("/images/foto_4.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        opacity: 0.3,
+        filter: 'grayscale(30%) brightness(0.6)'
+      }} />
+
+      {/* Gradient Overlay for extra depth */}
+      <div style={{
+        position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+        background: 'linear-gradient(to bottom, rgba(8,8,8,0.85) 0%, rgba(8,8,8,0.5) 50%, rgba(8,8,8,0.95) 100%)',
+      }} />
+
       {/* Header */}
-      <div style={{ padding: '48px 24px 12px', flexShrink: 0 }}>
+      <div style={{ padding: '48px 24px 12px', flexShrink: 0, position: 'relative', zIndex: 1 }}>
         <motion.p
           variants={fadeUp} initial="hidden"
           animate={isActive ? 'visible' : 'hidden'}
@@ -151,7 +168,7 @@ export default function SlideWish({ isActive }) {
       </div>
 
       {/* Scrollable content */}
-      <div style={{ flex: 1, overflowY: 'auto', padding: '4px 24px 28px', display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <div style={{ flex: 1, overflowY: 'auto', padding: '4px 24px 28px', display: 'flex', flexDirection: 'column', gap: 14, position: 'relative', zIndex: 1 }}>
         {/* Form */}
         <motion.form
           variants={fadeUp} initial="hidden"

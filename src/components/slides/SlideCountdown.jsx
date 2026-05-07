@@ -59,7 +59,7 @@ export default function SlideCountdown({ isActive }) {
   return (
     <div style={{
       width: '100%', height: '100%',
-      background: 'linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url(/images/gl13.jpg) center/cover no-repeat',
+      background: 'linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url(/images/gl11.jpg) center/cover no-repeat',
       display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
       padding: '0 28px', textAlign: 'center', gap: 32,
@@ -112,7 +112,7 @@ export default function SlideCountdown({ isActive }) {
         transition={{ duration: 0.5, delay: 0.75 }}
         style={{ color: 'rgba(255, 255, 255, 0.73)', fontSize: '0.75rem', letterSpacing: '0.12em' }}
       >
-        Sunday · 17 May 2026 · 09.30 WIB - 14.00 WIB
+        Sunday · 17 May<span style={{ fontSize: '0.65em', verticalAlign: 'super', marginLeft: '1px' }}>th</span> 2026 <br></br> 09.30 WIB - 14.00 WIB
       </motion.p>
 
       {/* Add to Calendar */}

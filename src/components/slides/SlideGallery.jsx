@@ -103,17 +103,17 @@ export default function SlideGallery({ isActive }) {
               backdropFilter: 'blur(8px)',
             }}
           >
-            <motion.img 
+            <motion.img
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               transition={{ duration: 0.4, type: 'spring', bounce: 0.2 }}
-              src={selected} 
-              alt="Full Preview" 
-              style={{ maxWidth: '95vw', maxHeight: '90vh', borderRadius: 8, objectFit: 'contain', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }} 
+              src={selected}
+              alt="Full Preview"
+              style={{ maxWidth: '95vw', maxHeight: '90vh', borderRadius: 8, objectFit: 'contain', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }}
               onClick={(e) => e.stopPropagation()}
             />
-            
+
             <button onClick={() => setSelected(null)} style={{
               position: 'absolute', top: 24, right: 24, background: 'rgba(255,255,255,0.15)',
               border: '1px solid rgba(255,255,255,0.2)', borderRadius: '50%', width: 40, height: 40,

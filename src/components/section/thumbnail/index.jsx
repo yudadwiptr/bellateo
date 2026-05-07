@@ -103,7 +103,7 @@ export default function Thumbnail() {
               </div>
               <p className="text-sm text-white/90 tracking-wide leading-snug">
                 <span className="font-medium text-white block drop-shadow-md">Saturday & Sunday</span>
-                <span className="drop-shadow-md">16 - 17 May 2026</span>
+                <span className="drop-shadow-md">16 - 17 May<span style={{ fontSize: '0.65em', verticalAlign: 'super', marginLeft: '1px' }}>th</span> 2026</span>
               </p>
             </div>
 

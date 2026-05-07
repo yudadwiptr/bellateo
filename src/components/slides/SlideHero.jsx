@@ -99,7 +99,7 @@ export default function SlideHero({ isActive }) {
           }}
         >
           <span style={{ color: '#E50913', fontSize: 8 }}>●</span>
-          Sunday · 17 May 2026
+          Sunday · 17 May<span style={{ fontSize: '0.65em', verticalAlign: 'super', marginLeft: '1px' }}>th</span> 2026
           <span style={{ color: '#E50913', fontSize: 8 }}>●</span>
         </motion.div>
       </div>
