@@ -37,13 +37,13 @@ const WishItem = forwardRef(({ name, message, created_at }, ref) => {
             {initial}
           </span>
         </div>
-        
+
         <div className="min-w-0">
           <h4 className="text-white font-semibold text-sm truncate">{name}</h4>
           <p className="text-white/40 text-[10px]">{formatDate(created_at)}</p>
         </div>
       </div>
-      
+
       <p className="text-white/80 text-sm leading-relaxed line-clamp-4 italic">
         "{message}"
       </p>
@@ -212,11 +212,11 @@ export default function SlideWish({ isActive }) {
 
         {/* Wish list - Horizontal Grid Scroll */}
         <div style={{ position: 'relative', marginTop: 10 }}>
-          <div 
+          <div
             ref={scrollRef}
             onScroll={handleScroll}
             className="grid grid-rows-2 grid-flow-col gap-3 pb-6 snap-x snap-mandatory no-scrollbar overflow-x-auto"
-            style={{ 
+            style={{
               scrollbarWidth: 'none', msOverflowStyle: 'none',
               paddingLeft: 2, paddingRight: 20,
               maxHeight: '500px' // Ensure there's a height for the 2 rows
