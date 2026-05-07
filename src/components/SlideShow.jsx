@@ -6,6 +6,7 @@ import SlideGroom from './slides/SlideGroom';
 import SlideLoveStory from './slides/SlideLoveStory';
 import SlideCountdown from './slides/SlideCountdown';
 import SlideLocations from './slides/SlideLocations';
+import SlideDresscode from './slides/SlideDresscode';
 import SlideGallery from './slides/SlideGallery';
 import SlideGift from './slides/SlideGift';
 import SlideWish from './slides/SlideWish';
@@ -18,6 +19,7 @@ const SLIDES = [
   { id: 'lovestory',  label: 'Love Story', Component: SlideLoveStory },
   { id: 'countdown',  label: 'Countdown',  Component: SlideCountdown },
   { id: 'locations',  label: 'Locations',  Component: SlideLocations },
+  { id: 'dresscode',  label: 'Dresscode',  Component: SlideDresscode },
   { id: 'gallery',    label: 'Gallery',    Component: SlideGallery },
   { id: 'gift',       label: 'Gift',       Component: SlideGift },
   { id: 'wish',       label: 'Wish',       Component: SlideWish },
