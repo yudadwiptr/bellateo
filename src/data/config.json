@@ -13,9 +13,9 @@
           "time": "12.00 WIB s/d Selesai"
         }
       ],
-      "place": "HKBP Palembang Lutheran Church",
+      "place": "HKBP Ressort Palembang Church",
       "address": "Jl. Mayor Ruslan No.03, Kelurahan 20 Ilir D.I, Kecamatan Ilir Timur I, Kota Palembang, Kode Pos 30125",
-      "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=HKBP+Palembang+Lutheran+Church"
+      "mapsUrl": "https://www.google.com/maps/dir/?api=1&destination=HKBP+Ressort+Palembang+Church"
     },
     "sunday": {
       "image_url": "/images/foto_3.jpg",
@@ -23,7 +23,7 @@
       "events": [
         {
           "title": "Wedding Reception",
-          "time": "10.00 – 14.00 WIB"
+          "time": "09.30 – 14.00 WIB"
         }
       ],
       "place": "Ballroom Rambang Semesta",
