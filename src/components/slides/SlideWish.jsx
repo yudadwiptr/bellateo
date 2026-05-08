@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import supabase from '../../lib/supabaseClient';
-import badwords from 'indonesian-badwords';
+
 
 const fadeUp = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
 const colorList = ['#E50913', '#FF9A00', '#00C853', '#2196F3'];
@@ -89,10 +89,8 @@ export default function SlideWish({ isActive }) {
 
   const validate = () => {
     const errs = {};
-    if (name.length < 3) errs.name = 'Min. 3 karakter';
-    if (message.length < 10) errs.message = 'Min. 10 karakter';
-    if (badwords.flag(name)) errs.name = 'Gunakan bahasa yang sopan';
-    if (badwords.flag(message)) errs.message = 'Gunakan bahasa yang sopan';
+    if (!name.trim()) errs.name = 'Nama harus diisi';
+    if (!message.trim()) errs.message = 'Ucapan harus diisi';
     setFormErrors(errs);
     return !Object.keys(errs).length;
   };
@@ -105,7 +103,7 @@ export default function SlideWish({ isActive }) {
     try {
       const { error } = await supabase
         .from(import.meta.env.VITE_APP_TABLE_NAME)
-        .insert([{ name, message: badwords.censor(message) }]);
+        .insert([{ name, message }]);
       if (error) throw error;
       await fetchWishes();
       setName(''); setMessage(''); setFormErrors({});
