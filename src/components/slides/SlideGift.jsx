@@ -81,7 +81,7 @@ export default function SlideGift({ isActive }) {
   return (
     <div style={{
       width: '100%', height: '100%',
-      background: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url(/images/gl_1.jpg) center/cover no-repeat',
+      background: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.85)), url(/images/gl_1.webp) center/cover no-repeat',
       display: 'flex', flexDirection: 'column',
       padding: '32px 24px 24px', gap: 12, overflowY: 'auto',
     }}>

@@ -72,7 +72,7 @@ export default function SlideLocations({ isActive }) {
   return (
     <div style={{
       width: '100%', height: '100%',
-      background: 'linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url(/images/fotowa.jpg) center/cover no-repeat',
+      background: 'linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url(/images/fotowa.webp) center/cover no-repeat',
       display: 'flex', flexDirection: 'column',
       padding: '32px 20px 24px', gap: 16, overflowY: 'auto',
     }}>

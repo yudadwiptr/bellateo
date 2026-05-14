@@ -8,7 +8,7 @@ export default function SlideThankYou({ isActive }) {
   return (
     <div style={{
       width: '100%', height: '100%', position: 'relative', overflow: 'hidden',
-      backgroundImage: 'url(/images/header.jpg)',
+      backgroundImage: 'url(/images/header.webp)',
       backgroundSize: 'cover', backgroundPosition: 'center 20%',
     }}>
       {/* Heavy dark overlay */}

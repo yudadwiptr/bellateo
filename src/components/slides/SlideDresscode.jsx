@@ -33,7 +33,7 @@ export default function SlideDresscode({ isActive }) {
       {/* Background Image with Overlay */}
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
-        backgroundImage: 'url("/images/foto5.jpg")',
+        backgroundImage: 'url("/images/foto5.webp")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         opacity: 0.25,

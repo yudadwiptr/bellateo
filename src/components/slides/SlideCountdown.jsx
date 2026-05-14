@@ -59,7 +59,7 @@ export default function SlideCountdown({ isActive }) {
   return (
     <div style={{
       width: '100%', height: '100%',
-      background: 'linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url(/images/gl11.jpg) center/cover no-repeat',
+      background: 'linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)), url(/images/gl11.webp) center/cover no-repeat',
       display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'center',
       padding: '0 28px', textAlign: 'center', gap: 32,
